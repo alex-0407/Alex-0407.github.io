@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Demo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" />
+  <link rel="stylesheet" href="lib/leaflet.groupedlayercontrol.css" />
+</head>
+<body>
+  <div id="map" style="width: 600px; height: 400px"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.js"></script>
+  <script src="lib/leaflet.groupedlayercontrol.js"></script>
+  <script src="demodata.js"></script>
+  <script>
+
+    var map = L.map('map', {
+      center: [39.73, -104.99],
+      zoom: 10,
+      layers: [DemoData.Basemaps.Grayscale, DemoData.LayerGroups.cities]
+    });
+
+    // disable drag and zoom handlers  
+
+    //禁止移动和放大缩小  
+      
+    // map.dragging.disable();  
+      
+    // map.touchZoom.disable();  
+      
+    // map.doubleClickZoom.disable();  
+      
+    // map.scrollWheelZoom.disable();  
+      
+    // disable tap handler, if present.  
+      
+    //禁止单击  
+
+    // if (map.tap) map.tap.disable();  
+
+    // Overlay layers are grouped
+    var groupedOverlays = {
+      "Landmarks": {
+        "Cities": DemoData.LayerGroups.cities,
+        "Restaurants": DemoData.LayerGroups.restaurants
+      },
+      "Random": {
+        "Dogs": DemoData.LayerGroups.dogs,
+        "Cats": DemoData.LayerGroups.cats
+      }
+    };
+
+    var options = {
+      // Make the "Landmarks" group exclusive (use radio inputs)
+      exclusiveGroups: ["Landmarks"],
+      // Show a checkbox next to non-exclusive group labels for toggling all
+      groupCheckboxes: true
+    };
+
+    // Use the custom grouped layer control, not "L.control.layers"
+    var layerControl = L.control.groupedLayers(DemoData.Basemaps, groupedOverlays, options);
+    map.addControl(layerControl);
+
+    L.control.scale().addTo(map);//添加比例尺
+
+    var zoomControl = L.control.zoom({  
+      position: 'bottomright'  
+    });  
+
+    map.addControl(zoomControl);//添加缩放控制
+
+    var alarmlight1 = L.icon({
+        iconUrl: 'img/alarmlight1.png',
+        iconSize: [10, 12],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+        // shadowUrl: 'my-icon-shadow.png',
+        shadowSize: [10, 12]
+        // shadowAnchor: [22, 94]
+    });
+    var alarm1Maker = L.marker([39.79, -104.96], {icon: alarmlight1}).addTo(map);
+
+    var alarmlight2 = L.icon({
+        iconUrl: 'img/alarmlight2.png',
+        iconSize: [10, 12],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+        // shadowUrl: 'my-icon-shadow.png',
+        shadowSize: [10, 12]
+        // shadowAnchor: [22, 94]
+    });
+    var alarm2Maker = L.marker([39.76, -104.98], {icon: alarmlight2}).addTo(map);
+
+    // function onMapClick(e) {
+    //   alert("You clicked the map at " + e.latlng);
+    // }
+    // map.on('click', onMapClick);//地图上添加事件
+
+    // bind event on marker
+    alarm1Maker.on('click', function(e) {
+      console.log(e);
+      alert('我是alarm1Maker，被点了。');
+    });
+
+    alarm2Maker.on('click', function(e) {
+      console.log(e);
+      alert('我是alarm2Maker，被点了。');
+    });
+
+    // Remove and add a layer
+    //layerControl.removeLayer(cities);
+    //layerControl.addOverlay(cities, "Cities", "New Category");
+  </script>
+</body>
+</html>
