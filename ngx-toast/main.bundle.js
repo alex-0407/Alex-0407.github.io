@@ -99,7 +99,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.showTopLeftToast = function () {
         var param = {
-            msg: 'success',
+            msg: 'info',
             position: this.toastService.position.top_left,
             timeout: 1000
         };
@@ -107,7 +107,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.showTopCenterToast = function () {
         var param = {
-            msg: 'success',
+            msg: 'info',
             position: this.toastService.position.top_center,
             timeout: 1000
         };
@@ -115,7 +115,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.showBottomRightToast = function () {
         var param = {
-            msg: 'success',
+            msg: 'info',
             position: this.toastService.position.bottom_right,
             timeout: 1000
         };
