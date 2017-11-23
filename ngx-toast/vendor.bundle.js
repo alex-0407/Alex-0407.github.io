@@ -83,6 +83,151 @@ function toComment(sourceMap) {
 
 /***/ }),
 
+/***/ "../../../../ngx-toast/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_app_services_toast_service__ = __webpack_require__("../../../../ngx-toast/src/app/services/toast.service.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_app_services_toast_service__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_app_toast_module__ = __webpack_require__("../../../../ngx-toast/src/app/toast.module.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__src_app_toast_module__["a"]; });
+/**
+ * Created by DELL on 11/15/2017.
+ */
+
+
+//# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
+/***/ "../../../../ngx-toast/src/app/services/toast.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToastService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ToastService = (function () {
+    function ToastService(toastrService) {
+        this.toastrService = toastrService;
+        this.toastrConfig = {};
+        this.position = {
+            top_right: 'toast-top-right',
+            bottom_right: 'toast-bottom-right',
+            top_left: 'toast-top-left',
+            bottom_left: 'toast-bottom-left',
+            top_full: 'toast-top-full',
+            bottom_full: 'toast-bottom-full',
+            top_center: 'toast-top-center',
+            bottom_center: 'toast-bottom-center'
+        };
+    }
+    ToastService.prototype.showInfoToast = function (params) {
+        var timeOut = params.timeout ? params.timeout : 1000;
+        var position = params.position;
+        this.toastrConfig = {
+            timeOut: timeOut,
+            positionClass: position
+        };
+        this.toastrService.info(params.msg, params.title, this.toastrConfig);
+    };
+    ToastService.prototype.showSuccessToast = function (params) {
+        var timeOut = params.timeout ? params.timeout : 1000;
+        var position = params.position;
+        this.toastrConfig = {
+            timeOut: timeOut,
+            positionClass: position
+        };
+        this.toastrService.success(params.msg, params.title, this.toastrConfig);
+    };
+    ToastService.prototype.showWarningToast = function (params) {
+        var timeOut = params.timeout ? params.timeout : 1000;
+        var position = params.position;
+        this.toastrConfig = {
+            timeOut: timeOut,
+            positionClass: position
+        };
+        this.toastrService.warning(params.msg, params.title, this.toastrConfig);
+    };
+    ToastService.prototype.showErrorToast = function (params) {
+        var timeOut = params.timeout ? params.timeout : 1000;
+        var position = params.position;
+        this.toastrConfig = {
+            timeOut: timeOut,
+            positionClass: position
+        };
+        this.toastrService.error(params.msg, params.title, this.toastrConfig);
+    };
+    ToastService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ngx_toastr__["b" /* ToastrService */]])
+    ], ToastService);
+    return ToastService;
+}());
+
+//# sourceMappingURL=toast.service.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-toast/src/app/toast.module.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToastModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_toast_service__ = __webpack_require__("../../../../ngx-toast/src/app/services/toast.service.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+// import { ToastComponent } from './toast.component';
+
+
+var ToastModule = (function () {
+    function ToastModule() {
+    }
+    ToastModule_1 = ToastModule;
+    ToastModule.forRoot = function () {
+        return {
+            ngModule: ToastModule_1,
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_2__services_toast_service__["a" /* ToastService */]
+            ],
+        };
+    };
+    ToastModule = ToastModule_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* NgModule */])({
+            declarations: [],
+            imports: [
+                // BrowserModule,
+                __WEBPACK_IMPORTED_MODULE_1_ngx_toastr__["a" /* ToastrModule */].forRoot(),
+            ],
+        })
+    ], ToastModule);
+    return ToastModule;
+    var ToastModule_1;
+}());
+
+//# sourceMappingURL=toast.module.js.map
+
+/***/ }),
+
 /***/ "../../../../ngx-toastr/toastr.es5.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
