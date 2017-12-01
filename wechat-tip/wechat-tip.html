@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-<a id="J_weixin" class="android-btn" href="https://github.com/alex-0407/Alex-0407.github.io/blob/master/assets/apk/MobileAssistant.apk">安卓版下载"</a>
+<button id="J_weixin" class="button button-blue" onclick='download()'><span>立即下载</span></button>
 <div id="weixin-tip">
     <p>
         <img src="live_weixin.png" alt="微信打开"/><span id="close" title="关闭" class="close">×</span>
@@ -69,6 +69,14 @@
                 tip.style.display = 'none';
             }
         }
+    }
+    function download() {
+//        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+//        if (isiOS) {
+//            window.location.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/yanxiaojun617/ionic2_tabs/master/app.plist";
+//        } else {
+            window.location.href = "https://github.com/alex-0407/Alex-0407.github.io/blob/master/assets/apk/MobileAssistant.apk";
+//        }
     }
 </script>
 </body>
