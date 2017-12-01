@@ -48,8 +48,8 @@
       <file leaf-file-name="weixinTip_purjs.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/weixinTip_purjs.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+            <state relative-caret-position="100">
+              <caret line="4" column="73" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -153,12 +153,12 @@
       <option name="presentableId" value="Default" />
       <updated>1512114785406</updated>
       <workItem from="1512114786653" duration="405000" />
-      <workItem from="1512116423616" duration="913000" />
+      <workItem from="1512116423616" duration="1276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1318000" />
+    <option name="totallyTimeSpent" value="1681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -237,8 +237,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weixinTip_purjs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+        <state relative-caret-position="100">
+          <caret line="4" column="73" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="73" />
           <folding />
         </state>
       </provider>

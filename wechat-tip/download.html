@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>appÏÂÔØ</title>
+    <title>appä¸‹è½½</title>
     <style type="text/css">
         body {
             text-align: center;
@@ -59,11 +59,11 @@
     </style>
 </head>
 <body>
-<p> appÏÂÔØ </p>
-<button id="download" class="button button-blue" onclick='download()'><span>Á¢¼´ÏÂÔØ</span></button>
+<p> appä¸‹è½½ </p>
+<button id="download" class="button button-blue" onclick='download()'><span>ç«‹å³ä¸‹è½½</span></button>
 <script>
     var isWeixin = navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == "micromessenger";
-    if (isWeixin) {//Èç¹ûÊÇÎ¢ĞÅ,¶¯Ì¬´´½¨html,ÌáÊ¾"ÔÚä¯ÀÀÆ÷´ò¿ª"
+    if (isWeixin) {//å¦‚æœæ˜¯å¾®ä¿¡,åŠ¨æ€åˆ›å»ºhtml,æç¤º"åœ¨æµè§ˆå™¨æ‰“å¼€"
         var style = document.createElement('style');
         style.rel = 'stylesheet';
         style.type = 'text/css';
@@ -73,11 +73,11 @@
         var div = document.createElement("div"), img = document.createElement("img");
         div.id = "weixin";
         img.src = "live_weixin.png";
-        img.alt = "µã»÷ÓÒÉÏ½Ç°´Å¥,Ñ¡ÔñÔÚä¯ÀÀÆ÷´ò¿ª";
+        img.alt = "ç‚¹å‡»å³ä¸Šè§’æŒ‰é’®,é€‰æ‹©åœ¨æµè§ˆå™¨æ‰“å¼€";
         div.appendChild(img);
         document.body.appendChild(div);
 
-        document.getElementById('download').style.display = 'none';//Òş²ØÏÂÔØ°´Å¥
+        document.getElementById('download').style.display = 'none';//éšè—ä¸‹è½½æŒ‰é’®
     }
 
     function download() {
