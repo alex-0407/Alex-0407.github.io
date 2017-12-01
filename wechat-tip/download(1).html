@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>ionic2_tab下载</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+            font-size: 14px;
+        }
+
+        .content {
+            height: 90%;
+            overflow: auto;
+        }
+
+        .logo {
+            background-image: url(bg.png);
+            height: 130px;
+            padding-top: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .logo > div {
+            font-size: 16px;
+        }
+
+        .image-display > img {
+            float: left;
+            display: block;
+            width: 30%;
+            height: 240px;
+            margin-left: 10px;
+        }
+
+        .picture-Preview {
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+
+        .image-display {
+            width: 500px;
+            overflow: auto;
+            padding: 5px 0;
+        }
+
+        .image-display:after {
+            clear: both;
+            content: ' ';
+            display: block;
+        }
+
+        .attribute {
+            padding: 10px 16px;
+            border-bottom: 1px solid gainsboro;
+        }
+
+        .introduction {
+            padding: 10px 16px;
+
+        }
+
+        .footer {
+            height: 10%;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .footer button {
+            font-size: 16px;
+            background: #0084ff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            margin-top: 10px;
+            min-width: 240px;
+        }
+
+        #weiXin {
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            filter: alpha(opacity=80);
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            text-align: center;
+            padding-top: 10px;
+            display: none;
+        }
+
+        #weiXin > img {
+            width: 95%;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="logo">
+        <img src="logo.png" alt="">
+        <div>ionic2_tab</div>
+    </div>
+    <div class="picture-Preview">
+        <div class="image-display">
+            <img src="0.png" alt="">
+            <img src="1.png" alt="">
+            <img src="2.png" alt="">
+        </div>
+    </div>
+    <div class="attribute">
+        <div>资费：免费</div>
+        <div>大小：8M</div>
+        <div>版本：1.0</div>
+        <div>开发：广州科腾信息技术有限公司</div>
+    </div>
+    <div class="introduction">
+        <h3>应用介绍</h3>
+        <div> 很多人对写方案非常没有信心，一涉及到方案的事情，就束手无策。写方案不难，知道怎么写才难。这里只总结一点，其核心是结构化地组织思想。有结构就有思路，有思路就有方案。</div>
+    </div>
+    <div class="introduction">
+        <h3>更新日志</h3>
+        <div>阅读体验性能全面升级</div>
+        <div>线下数据采集</div>
+        <div>浏览更顺畅</div>
+    </div>
+</div>
+<div class="footer">
+    <button onclick='download()' id="download">立 即 安 装</button>
+</div>
+<div id="weiXin">
+    <img src="weixin_tip.png" alt="点击右上角按钮,选择在浏览器打开">
+</div>
+<script>
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        document.getElementById('weiXin').style.display = 'block';
+    }
+    function download() {
+        var download = document.getElementById('download');
+        download.innerHTML='准 备 下 载 中...';
+        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        if (isiOS) {
+            window.location.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/yanxiaojun617/ionic2_tabs/master/app.plist";
+            setTimeout(function () {
+                download.innerHTML='点击安装后,请按Home键在桌面查看';
+            },4000);
+        } else {
+            window.location.href = "ionic2_tabs.apk";
+            setTimeout(function () {
+                download.innerHTML='立 即 安 装';
+            },4000);
+        }
+    }
+</script>
+</body>
+</html>

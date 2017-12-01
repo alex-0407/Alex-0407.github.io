@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>items</key>
+    <array>
+      <dict>
+        <key>assets</key>
+        <array>
+          <dict>
+            <key>kind</key>
+            <string>software-package</string>
+            <key>url</key>
+            <string>http://dn168.net/img/apk/IOSPatrol.ipa(安装包地址,最好是https开头)</string>
+          </dict>
+          <dict>
+            <key>kind</key>
+            <string>full-size-image</string>
+            <key>needs-shine</key>
+            <true/>
+            <key>url</key>
+            <string>http://dn168.net/img/apk/logo.png(你app的logo地址)</string>
+          </dict>
+          <dict>
+            <key>kind</key>
+            <string>display-image</string>
+            <key>needs-shine</key>
+            <true/>
+            <key>url</key>
+            <string>http://dn168.net/img/apk/logo.png(你app的logo地址)</string>
+          </dict>
+        </array>
+        <key>metadata</key>
+        <dict>
+          <key>bundle-identifier</key>
+          <string>com.kit.eguardian(app的id,在ionic2项目config.xml中查看)</string>
+          <key>bundle-version</key>
+          <string>0.2.2(版本号随意)</string>
+          <key>kind</key>
+          <string>software</string>
+          <key>title</key>
+          <string>EGuardian(app的name,在ionic2项目config.xml中查看)</string>
+        </dict>
+      </dict>
+    </array>
+  </dict>
+</plist>
