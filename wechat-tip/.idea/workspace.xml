@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wehat-tip.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wehat-tip.html">
+      <file leaf-file-name="wechat-tip.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wechat-tip.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="12" />
+            <state relative-caret-position="325">
+              <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -59,6 +59,7 @@
       <list>
         <option value="$PROJECT_DIR$/wetip.html" />
         <option value="$PROJECT_DIR$/wehat-tip.html" />
+        <option value="$PROJECT_DIR$/wechat-tip.html" />
       </list>
     </option>
   </component>
@@ -198,12 +199,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512114209914</updated>
-      <workItem from="1512114211188" duration="1257000" />
+      <workItem from="1512114211188" duration="1505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1257000" />
+    <option name="totallyTimeSpent" value="1505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -264,10 +265,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wehat-tip.html">
+    <entry file="file://$PROJECT_DIR$/wechat-tip.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="12" />
+        <state relative-caret-position="325">
+          <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
           <folding />
         </state>
       </provider>
