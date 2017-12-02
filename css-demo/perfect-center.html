@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfect Center</title>
+    <style>
+        .wrp {
+            background-color: blueviolet;
+            width: 500px;
+            height: 200px;
+            margin:0 auto;
+            margin-top: 4px;
+            border:2px solid yellowgreen;
+            border-radius:20px;
+            -moz-border-radius:20px; /* 老的 Firefox */
+        }
+        .box {
+            color: white;
+            background-color: yellowgreen;
+            width: 300px;
+            height: 120px;
+            overflow: auto;
+        }
+        .wrp1 { position: relative; }
+        .box1 {
+            margin: auto;
+            position: absolute;
+            left: 0; right: 0; top: 0; bottom: 0;
+        }
+
+
+        .wrp2 { position: relative; }
+        .box2 {
+            position: absolute;
+            top: 50%; left: 50%;
+            margin-left: -150px; /* (width + padding)/2 */
+            margin-top: -75px; /* (height + padding)/2 */
+        }
+
+        .wrp3 { position: relative; }
+        .box3 {
+            margin: auto;
+            position: absolute;
+            top: 50%; left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+
+        .wrp4 { display: table; }
+        .subwrp4 {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .box4 {
+            margin: auto;
+            overflow-wrap: break-word;
+            height: auto;
+            max-height: 80%;
+            max-width: 80%;
+        }
+
+        .wrp5 {
+            text-align: center;
+            overflow: auto;
+        }
+        .box5 {
+            display: inline-block;
+            vertical-align: middle;
+            width: auto;
+            height: auto;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .wrp5:after {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+            margin-left: -0.25em;
+            /* To offset spacing. May vary by font */
+        }
+
+
+        .wrp6 {
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+        .box6 {
+            width: auto;
+            height: auto;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrp wrp1">
+    <div class="box box1">
+        <h3>完美居中1</h3>
+        <h3>绝对定位+margin：auto</h3>
+    </div>
+</div>
+<div class="wrp wrp2">
+    <div class="box box2">
+        <h3>完美居中2</h3>
+        <h3>绝对定位+margin反向偏移</h3>
+    </div>
+</div>
+<div class="wrp wrp3">
+    <div class="box box3">
+        <h3>完美居中3</h3>
+        <h3>绝对定位+transform反向偏移</h3>
+    </div>
+</div>
+<div class="wrp wrp4">
+    <div class="subwrp4">
+        <div class="box box4">
+            <h3>完美居中4</h3>
+            <h3>display：tabel</h3>
+        </div>
+    </div>
+</div>
+<div class="wrp wrp5">
+    <div class="box box5">
+        <h3>完美居中5</h3>
+        <h3>display: inline-block</h3>
+    </div>
+</div>
+<div class="wrp wrp6">
+    <div class="box box6">
+        <h3>完美居中6</h3>
+        <h3>display: flex-box</h3>
+    </div>
+</div>
+</body>
+</html>
