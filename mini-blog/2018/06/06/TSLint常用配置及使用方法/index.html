@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/mini-blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/mini-blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/mini-blog/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/mini-blog/images/pen_32px.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/mini-blog/images/pen_16px.ico?v=5.1.3">
+
+
+
+
+
+
+  <meta name="keywords" content="tslint," />
+
+
+
+
+
+  <link rel="alternate" href="/mini-blog/atom.xml" title="alex的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="TSLint核心规则及相关库TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：  tslint-eslint-rules——ionic项目默认使用这个 codelyzer——angular项目默认使用这个 还有很多">
+<meta name="keywords" content="tslint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TSLint常用配置及使用方法">
+<meta property="og:url" content="https://github.com/alex-0407/2018/06/06/TSLint常用配置及使用方法/index.html">
+<meta property="og:site_name" content="alex的博客">
+<meta property="og:description" content="TSLint核心规则及相关库TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：  tslint-eslint-rules——ionic项目默认使用这个 codelyzer——angular项目默认使用这个 还有很多">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3100736-ae0ab7129b2d7469.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3100736-aad1e6a8a61076d7.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2018-06-06T05:57:08.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TSLint常用配置及使用方法">
+<meta name="twitter:description" content="TSLint核心规则及相关库TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：  tslint-eslint-rules——ionic项目默认使用这个 codelyzer——angular项目默认使用这个 还有很多">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3100736-ae0ab7129b2d7469.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/mini-blog/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/alex-0407/2018/06/06/TSLint常用配置及使用方法/"/>
+
+
+
+
+
+  <title>TSLint常用配置及使用方法 | alex的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?327573ae29bff3e49a0152fd0be5e1c2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/mini-blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">alex的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/mini-blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/mini-blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/mini-blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/mini-blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/mini-blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2018/06/06/TSLint常用配置及使用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫码关注">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/mini-blog/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="alex的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TSLint常用配置及使用方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-06T13:55:55+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/mini-blog/categories/tslint/" itemprop="url" rel="index">
+                    <span itemprop="name">tslint</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/mini-blog/2018/06/06/TSLint常用配置及使用方法/" class="leancloud_visitors" data-flag-title="TSLint常用配置及使用方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<hr>
+</blockquote>
+<h2 id="TSLint核心规则及相关库"><a href="#TSLint核心规则及相关库" class="headerlink" title="TSLint核心规则及相关库"></a>TSLint核心规则及相关库</h2><p>TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：</p>
+<ul>
+<li>tslint-eslint-rules——ionic项目默认使用这个</li>
+<li>codelyzer——angular项目默认使用这个</li>
+<li><p>还有很多</p>
+<hr>
+</li>
+</ul>
+  <a id="more"></a>
+<h2 id="腾讯团队开源项目tslint-config-alloy"><a href="#腾讯团队开源项目tslint-config-alloy" class="headerlink" title="腾讯团队开源项目tslint-config-alloy"></a>腾讯团队开源项目tslint-config-alloy</h2><p>现在有了大量校验规则，如何使用如何配置呢。我们使用了腾讯团队的开源项目tslint-config-alloy，它的配置原则：</p>
+<ul>
+<li>能够帮助发现代码错误的规则，全部开启</li>
+<li>配置不应该依赖于某个具体项目，而应尽可能的合理</li>
+<li>帮助保持团队的代码风格统一，而不是限制开发体验</li>
+</ul>
+<p>如果觉得tslint-config-alloy提供的配置不合理，我们就可以在本文最开始提到的tslint.json文件(ionic项目根目录下)中覆盖它的配置</p>
+<h2 id="如何使用tslint-config-alloy"><a href="#如何使用tslint-config-alloy" class="headerlink" title="如何使用tslint-config-alloy"></a>如何使用tslint-config-alloy</h2><ul>
+<li><p>项目安装依赖：npm install –save-dev tslint-eslint-rules tslint-config-alloy</p>
+<p> 其中tslint-eslint-rules是规则的实现，它的规则已经继承了tslint，其中tslint-config-alloy是规则的配置，我们的配置继承这里的配置。</p>
+</li>
+<li><p>配置tslint.json内容如下</p>
+<p>其中rulesDirectory指定规则的实现目录，可以配置多个，如你自定义的规则的目录；其中extends指定我们继承的配置，这里继承tslint-config-alloy，我们可以在rules中添加配置和覆盖tslint-config-alloy提供的配置。</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"tslint-config-alloy"</span>,</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    "no-parameter-properties":false, // 禁止给类的构造函数的参数添加修饰符</span><br><span class="line">    "triple-equals":false,</span><br><span class="line">    "no-debugger": false,</span><br><span class="line">    // 禁止行尾有空格</span><br><span class="line">    "no-trailing-whitespace": false,</span><br><span class="line">    "member-ordering":false,</span><br><span class="line">    "no-this-assignment": [true, &#123;"allowed-names": ["^self$","^that$"], "allow-destructuring": true&#125;],</span><br><span class="line">    // 必须使用箭头函数，除非是单独的函数声明或是命名函数</span><br><span class="line">    "only-arrow-functions": [</span><br><span class="line">      false,</span><br><span class="line">      "allow-declarations",</span><br><span class="line">      <span class="string">"allow-named-functions"</span></span><br><span class="line">    ],</span><br><span class="line">    // 禁止出现空代码块，允许 catch 是空代码块</span><br><span class="line">    "no-empty": [</span><br><span class="line">      false,</span><br><span class="line">      <span class="string">"allow-empty-catch"</span></span><br><span class="line">    ],</span><br><span class="line">    // 禁止无用的类型断言</span><br><span class="line">    "no-unnecessary-type-assertion": false,</span><br><span class="line">    // 使用 return; 而不是 return undefined;</span><br><span class="line">    "return-undefined": false,</span><br><span class="line">    // 禁止对 array 使用 for in 循环</span><br><span class="line">    "no-for-in-array": false,</span><br><span class="line">    "comment-format": [true, "check-space"], // 单行注释格式化规则</span><br><span class="line">  &#125;,</span><br><span class="line">  "rulesDirectory": [</span><br><span class="line">    <span class="string">"node_modules/tslint-eslint-rules/dist/rules"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决"><a href="#tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决" class="headerlink" title="tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决"></a>tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决</h2><p>   这时候要么在tslint.json重新定义规则，要么修改ide配置，如：</p>
+<ol>
+<li><p>webstorm设置import自动导入的内容为单引号<br><img src="https://upload-images.jianshu.io/upload_images/3100736-ae0ab7129b2d7469.gif?imageMogr2/auto-orient/strip" alt="webstorm-punctation.gif"></p>
+</li>
+<li><p>webstorm设置import自动导入大括号两边添加空格<br><img src="https://upload-images.jianshu.io/upload_images/3100736-aad1e6a8a61076d7.gif?imageMogr2/auto-orient/strip" alt="webstorm-spaces.gif"></p>
+<p>默认自动生成格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;AbstractControl&#125; from &apos;@angular/forms&apos;;</span><br></pre></td></tr></table></figure>
+<p>想要格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; AbstractControl &#125; from &apos;@angular/forms&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li>其他配置自行百度</li>
+<li>实际开发过程中可以先不启用TSLint，每次提交代码前或测试开发的代码时在启用并修复问题</li>
+</ol>
+<h2 id="TSLint注释标记"><a href="#TSLint注释标记" class="headerlink" title="TSLint注释标记"></a>TSLint注释标记</h2><ul>
+<li><p>ts文件中使用以下注释来临时忽略规则出现的错误，参考这里</p>
+<p>  /<em> tslint:disable </em>/——忽略该行以下所有代码出现的错误提示</p>
+<p>  /<em> tslint:enable </em>/——当前ts文件重新启用tslint</p>
+<p>  // tslint:disable-line——忽略当前行代码出现的错误提示</p>
+<p>  // tslint:disable-next-line——忽略下一行代码出现的错误提示</p>
+</li>
+</ul>
+<h2 id="常用的tslint配置项"><a href="#常用的tslint配置项" class="headerlink" title="常用的tslint配置项"></a>常用的tslint配置项</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 禁止给类的构造函数的参数添加修饰符</span><br><span class="line">  "no-parameter-properties": false,</span><br><span class="line">  // 禁止使用 debugger</span><br><span class="line">  "no-debugger": false,</span><br><span class="line">  // 禁止行尾有空格</span><br><span class="line">  "no-trailing-whitespace": false,</span><br><span class="line">  // 禁止无用的表达式</span><br><span class="line">  "no-unused-expression": true,</span><br><span class="line">  // 定义过的变量必须使用</span><br><span class="line">  "no-unused-variable": true,</span><br><span class="line">  // 变量必须先定义后使用</span><br><span class="line">  "no-use-before-declare": true,</span><br><span class="line">  // 禁止使用 var</span><br><span class="line">  "no-var-keyword": true,</span><br><span class="line">  // 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外</span><br><span class="line">  "triple-equals": true,</span><br><span class="line">  // 指定类成员的排序规则</span><br><span class="line">  "member-ordering": false,</span><br><span class="line">  // 禁止将 this 赋值给其他变量，除非是解构赋值</span><br><span class="line">  "no-this-assignment": [</span><br><span class="line">    false,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"allowed-names"</span>: [</span><br><span class="line">        <span class="string">"^self$"</span>,</span><br><span class="line">        <span class="string">"^that$"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"allow-destructuring"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  // 必须使用箭头函数，除非是单独的函数声明或是命名函数</span><br><span class="line">  "only-arrow-functions": [</span><br><span class="line">    true,</span><br><span class="line">    "allow-declarations",</span><br><span class="line">    <span class="string">"allow-named-functions"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止出现空代码块，允许 catch 是空代码块</span><br><span class="line">  "no-empty": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"allow-empty-catch"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止无用的类型断言</span><br><span class="line">  "no-unnecessary-type-assertion": true,</span><br><span class="line">  // 使用 return; 而不是 return undefined;</span><br><span class="line">  "return-undefined": true,</span><br><span class="line">  // 禁止对 array 使用 for in 循环</span><br><span class="line">  "no-for-in-array": true,</span><br><span class="line">  "comment-format": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"check-space"</span></span><br><span class="line">  ],</span><br><span class="line">  // 单行注释格式化规则</span><br><span class="line">  // 定义函数时如果用到了覆写，则必须将覆写的函数写到一起</span><br><span class="line">  "adjacent-overload-signatures": true,</span><br><span class="line">  // 禁止对函数的参数重新赋值</span><br><span class="line">  "no-parameter-reassignment": true,</span><br><span class="line">  // if 后面必须有 &#123;，除非是单行 if</span><br><span class="line">  "curly": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-same-line"</span></span><br><span class="line">  ],</span><br><span class="line">  // for in 内部必须有 hasOwnProperty</span><br><span class="line">  "forin": true,</span><br><span class="line">  // 禁止在分支条件判断中有赋值操作</span><br><span class="line">  "no-conditional-assignment": true,</span><br><span class="line">  // 禁止使用 new 来生成 String, Number 或 Boolean</span><br><span class="line">  "no-construct": true,</span><br><span class="line">  // 禁止 super 在一个构造函数中出现两次</span><br><span class="line">  "no-duplicate-super": true,</span><br><span class="line">  // 禁止在 switch 语句中出现重复测试表达式的 case</span><br><span class="line">  "no-duplicate-switch-case": true,</span><br><span class="line">  // 禁止出现重复的变量定义或函数参数名</span><br><span class="line">  "no-duplicate-variable": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"check-parameters"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用 eval</span><br><span class="line">  "no-eval": true,</span><br><span class="line">  // 禁止对对象字面量进行类型断言（断言成 any 是允许的）</span><br><span class="line">  "no-object-literal-type-assertion": true,</span><br><span class="line">  // 禁止没必要的 return await</span><br><span class="line">  "no-return-await": true,</span><br><span class="line">  // 禁止在数组中出现连续的逗号，如 let foo = [,,]</span><br><span class="line">  "no-sparse-arrays": true,</span><br><span class="line">  // 禁止 throw 字符串，必须 throw 一个 Error 对象</span><br><span class="line">  "no-string-throw": true,</span><br><span class="line">  // switch 的 case 必须 return 或 break</span><br><span class="line">  "no-switch-case-fall-through": true,</span><br><span class="line">  // 使用实例的方法时，必须 bind 到实例上</span><br><span class="line">  "no-unbound-method": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-static"</span></span><br><span class="line">  ],</span><br><span class="line">  // 使用 &#123; ...foo, bar: 1 &#125; 代替 Object.assign(&#123;&#125;, foo, &#123; bar: 1 &#125;)</span><br><span class="line">  // 前者的类型检查更完善</span><br><span class="line">  "prefer-object-spread": true,</span><br><span class="line">  // parseInt 必须传入第二个参数</span><br><span class="line">  "radix": true,</span><br><span class="line">  // 必须使用 isNaN(foo) 而不是 foo === NaN</span><br><span class="line">  "use-isnan": true,</span><br><span class="line">  //</span><br><span class="line">  //</span><br><span class="line">  // 可维护性</span><br><span class="line">  // 这些规则可以增加代码的可维护性</span><br><span class="line">  //</span><br><span class="line">  // 禁止函数的循环复杂度超过 20，https://en.wikipedia.org/wiki/Cyclomatic_complexity</span><br><span class="line">  "cyclomatic-complexity": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">20</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用废弃（被标识了 @deprecated）的 API</span><br><span class="line">  "deprecation": true,</span><br><span class="line">  // 一个缩进必须用四个空格替代</span><br><span class="line">  "indent": [</span><br><span class="line">    true,</span><br><span class="line">    "spaces",</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止出现重复的 import</span><br><span class="line">  "no-duplicate-imports": true,</span><br><span class="line">  // 禁止一个文件中出现多个相同的 namespace</span><br><span class="line">  "no-mergeable-namespace": true,</span><br><span class="line">  // 文件类型必须时 utf-8</span><br><span class="line">  "encoding": true,</span><br><span class="line">  // import 语句中，关键字之间的间距必须是一个空格</span><br><span class="line">  "import-spacing": true,</span><br><span class="line">  // 接口可以 implement extend 和 merge</span><br><span class="line">  "interface-over-type-literal": true,</span><br><span class="line">  // new 后面只必须有一个空格</span><br><span class="line">  "new-parens": true,</span><br><span class="line">  // 类型断言必须使用 as Type，禁止使用 &lt;Type&gt;</span><br><span class="line">  // &lt;Type&gt; 容易被理解为 jsx</span><br><span class="line">  "no-angle-bracket-type-assertion": true,</span><br><span class="line">  // 禁止连续超过三行空行</span><br><span class="line">  "no-consecutive-blank-lines": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">3</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用特殊空白符（比如全角空格）</span><br><span class="line">  "no-irregular-whitespace": true,</span><br><span class="line">  // 禁止使用 JSDoc，因为 TypeScirpt 已经包含了大部分功能</span><br><span class="line">  "no-redundant-jsdoc": true,</span><br><span class="line">  // 禁止使用三斜杠引入类型定义文件</span><br><span class="line">  "no-reference-import": true,</span><br><span class="line">  // 禁止变量定义时赋值为 undefined</span><br><span class="line">  "no-unnecessary-initializer": true,</span><br><span class="line">  // 小数必须以 0. 开头，禁止以 . 开头，并且不能以 0 结尾</span><br><span class="line">  "number-literal-format": true,</span><br><span class="line">  // 必须使用 a = &#123;b&#125; 而不是 a = &#123;b: b&#125;</span><br><span class="line">  "object-literal-shorthand": true,</span><br><span class="line">  // 变量申明必须每行一个，for 循环的初始条件中除外</span><br><span class="line">  "one-variable-per-declaration": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-for-loop"</span></span><br><span class="line">  ],</span><br><span class="line">  // if 后的 &#123; 禁止换行</span><br><span class="line">  "one-line": true,</span><br><span class="line">  // 必须使用单引号，jsx 中必须使用双引号</span><br><span class="line">  "quotemark": [</span><br><span class="line">    true,</span><br><span class="line">    "single",</span><br><span class="line">    "jsx-double",</span><br><span class="line">    "avoid-template",</span><br><span class="line">    <span class="string">"avoid-escape"</span></span><br><span class="line">  ],</span><br><span class="line">  // 行尾必须有分号</span><br><span class="line">  "semicolon": [</span><br><span class="line">    true,</span><br><span class="line">    "always",</span><br><span class="line">    <span class="string">"ignore-interfaces"</span></span><br><span class="line">  ],</span><br><span class="line">  // 函数名前必须有空格</span><br><span class="line">  "space-before-function-paren": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"asyncArrow"</span></span><br><span class="line">  ],</span><br><span class="line">  // 括号内首尾禁止有空格</span><br><span class="line">  "space-within-parens": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">0</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止 finally 内出现 return, continue, break, throw 等</span><br><span class="line">  // finally 会比 catch 先执行</span><br><span class="line">  "no-unsafe-finally": true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/mini-blog/images/wechat.jpg" alt="扫码关注 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/mini-blog/images/zhifubao.jpg" alt="扫码关注 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+    
+      
+<div>
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ 本文结束 ------</div>
+<br/>
+
+<ul class="post-copyright" style="margin: 2em 0 0; padding: 0.5em 1em;border-left: 3px solid #ff1700;background-color: #f9f9f9;list-style: none; ">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Alex
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/mini-blog/tags/tslint/" rel="tag"># tslint</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/mini-blog/2018/06/06/深入理解js中的this/" rel="next" title="深入理解普通函数中的this及ES6箭头函数的this">
+                <i class="fa fa-chevron-left"></i> 深入理解普通函数中的this及ES6箭头函数的this
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="gitalk-container">
+
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/mini-blog/images/avatar.png"
+                alt="扫码关注" />
+            
+              <p class="site-author-name" itemprop="name">扫码关注</p>
+              <p class="site-description motion-element" itemprop="description">关注微信公众号——全栈弄潮儿，获取angular1/2/4、ionic1/2/3、react native、vue、nodejs、小程序等最新技术文章、视频教程和开源项目，一起交流分享全栈开发最新技术。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/mini-blog/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/mini-blog/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/mini-blog/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/mini-blog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/alex-0407" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:itneituiquan@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://wpa.qq.com/msgrd?v=3&uin=1029278668&site=在线客服&menu=yes" target="_blank" title="QQ">
+                    
+                      <i class="fa fa-fw fa-qq"></i>QQ</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/6c16640d68d2" title="简书" target="_blank">简书</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cnblogs.com/LVBingo/" title="博客园" target="_blank">博客园</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/people/alex-008/activities" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TSLint核心规则及相关库"><span class="nav-number">1.</span> <span class="nav-text">TSLint核心规则及相关库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#腾讯团队开源项目tslint-config-alloy"><span class="nav-number">2.</span> <span class="nav-text">腾讯团队开源项目tslint-config-alloy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用tslint-config-alloy"><span class="nav-number">3.</span> <span class="nav-text">如何使用tslint-config-alloy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决"><span class="nav-number">4.</span> <span class="nav-text">tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TSLint注释标记"><span class="nav-number">5.</span> <span class="nav-text">TSLint注释标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的tslint配置项"><span class="nav-number">6.</span> <span class="nav-text">常用的tslint配置项</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">扫码关注</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom"><iframe frameborder="0" scrolling="0" width="90px" height="22px" src="https://ghbtns.com/github-btn.html?user=alex-0407&amp;repo=mini-blog&amp;type=star&amp;count=false"> </iframe></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/mini-blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/mini-blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/mini-blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/mini-blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/mini-blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/mini-blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/mini-blog/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/mini-blog/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/mini-blog/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/mini-blog/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/mini-blog/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/mini-blog/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/mini-blog/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+      <script>
+        var gitalk = new Gitalk({
+          clientID: '6128e9da22c99bf5cf9d',
+          clientSecret: '9af15dad1f82e0da7da7624f330f3a30612d0fbc',
+          repo: 'mini-blog',
+          owner: 'alex-0407',
+          admin: ['alex-0407'],
+          id: 'Demo',      // Ensure uniqueness and length less than 50
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/mini-blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("rlHINL5l9IzdouKB8RNR7ril-gzGzoHsz", "IpbeRQ5vde0T5pEI92n7iaJ2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
