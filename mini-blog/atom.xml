@@ -6,7 +6,7 @@
   <link href="/mini-blog/atom.xml" rel="self"/>
   
   <link href="https://github.com/alex-0407/"/>
-  <updated>2018-06-06T05:57:08.826Z</updated>
+  <updated>2018-06-06T07:36:54.754Z</updated>
   <id>https://github.com/alex-0407/</id>
   
   <author>
@@ -17,9 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>tslint 与 git pre-commit 配置教程</title>
+    <link href="https://github.com/alex-0407/2018/06/07/tslint%20git%20pre-commit%20%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"/>
+    <id>https://github.com/alex-0407/2018/06/07/tslint git pre-commit 配置教程/</id>
+    <published>2018-06-07T08:30:11.000Z</published>
+    <updated>2018-06-06T07:36:54.754Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><hr></blockquote><h2 id="tslint-配合pre-commit的意义"><a href="#tslint-配合pre-commit的意义" class="headerlink" title="tslint 配合pre-commit的意义"></a>tslint 配合pre-commit的意义</h2><p>为什么用pre-commit 加 tslint（jshint，eslint原理都类似），因为在项目中我们会经常忘记主动的去做代码检查，虽然结合webpack各种构建工具下，存在*slint报错，项目会跑不起来。但在某些情况下，可能会因为着急，或者其他原因，没有去观察项目运行的情况就仓促提交。团队开发的情景下，可能会成为别人的麻烦。而pre-commit tslint解决的需求既是：拒绝向仓库提交错误代码。</p><h2 id="git-hooks"><a href="#git-hooks" class="headerlink" title="git hooks"></a>git hooks</h2><p>在配置tslint pre commit之前，首先需要了解git hooks，正如它的名字所示，这是一个关于git 操作的钩子，比如我们想要在做远程仓库推送时，那就会触发pre-push这个钩子，然后在这个钩子中写下自己想做的事。git hooks的配置就在项目.git文件夹下面的hooks文件夹中。</p><p>在写相关的钩子函数时，需要注意的是，将钩子后面的sample后缀去掉，代码才会生效。</p><p>比如，本文中用到的pre-commit这个钩子。 </p><p>更多关于git hooks的介绍，请参考：<a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" target="_blank" rel="noopener">https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks</a></p><p>下面介绍如何配置：</p><hr> <a id="more"></a><h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><ol><li>打开项目中的.git/hooks文件夹，找到pre-commit.sample文件，将以下代码替换到文件中。</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">TSLINT=&quot;$(git rev-parse --show-toplevel)/node_modules/.bin/tslint&quot;</span><br><span class="line">for file in $(git diff --cached --name-only | grep -E &apos;\.ts$&apos;)</span><br><span class="line">do</span><br><span class="line">        git show &quot;:$file&quot; | &quot;$TSLINT&quot; &quot;$file&quot;</span><br><span class="line">        if [ $? -ne 0 ]; then</span><br><span class="line">                exit 1</span><br><span class="line">        fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure><ol start="2"><li>将pre-commit.sample文件名修改为pre-commit。</li></ol><p>此时再打开项目运行git commit -m”xxx”命令时，tslint会做自动的检查，如果没有错误的话，才会提交成功。而存在tslint报错的话，会终止提交。<br><img src="https://upload-images.jianshu.io/upload_images/3100736-33f7c7ab5dc22071.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tslint-error.png"></p><ul><li>注意： 日常开发中，有时为了方便会直接使用git commit -am”xxx”（即add+commit）的指令。而pre-commit 只是单独commit 钩子，因此还需要在pre-applypatch这个钩子下去做相同的配置。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;hr&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;tslint-配合pre-commit的意义&quot;&gt;&lt;a href=&quot;#tslint-配合pre-commit的意义&quot; class=&quot;headerlink&quot; title=&quot;tslint 配合pre-commit的意义&quot;&gt;&lt;/a&gt;tslint 配合pre-commit的意义&lt;/h2&gt;&lt;p&gt;为什么用pre-commit 加 tslint（jshint，eslint原理都类似），因为在项目中我们会经常忘记主动的去做代码检查，虽然结合webpack各种构建工具下，存在*slint报错，项目会跑不起来。但在某些情况下，可能会因为着急，或者其他原因，没有去观察项目运行的情况就仓促提交。团队开发的情景下，可能会成为别人的麻烦。而pre-commit tslint解决的需求既是：拒绝向仓库提交错误代码。&lt;/p&gt;
+&lt;h2 id=&quot;git-hooks&quot;&gt;&lt;a href=&quot;#git-hooks&quot; class=&quot;headerlink&quot; title=&quot;git hooks&quot;&gt;&lt;/a&gt;git hooks&lt;/h2&gt;&lt;p&gt;在配置tslint pre commit之前，首先需要了解git hooks，正如它的名字所示，这是一个关于git 操作的钩子，比如我们想要在做远程仓库推送时，那就会触发pre-push这个钩子，然后在这个钩子中写下自己想做的事。git hooks的配置就在项目.git文件夹下面的hooks文件夹中。&lt;/p&gt;
+&lt;p&gt;在写相关的钩子函数时，需要注意的是，将钩子后面的sample后缀去掉，代码才会生效。&lt;/p&gt;
+&lt;p&gt;比如，本文中用到的pre-commit这个钩子。 &lt;/p&gt;
+&lt;p&gt;更多关于git hooks的介绍，请参考：&lt;a href=&quot;https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下面介绍如何配置：&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="tslint" scheme="https://github.com/alex-0407/categories/tslint/"/>
+    
+    
+      <category term="git" scheme="https://github.com/alex-0407/tags/git/"/>
+    
+      <category term="tslint" scheme="https://github.com/alex-0407/tags/tslint/"/>
+    
+  </entry>
+  
+  <entry>
     <title>TSLint常用配置及使用方法</title>
-    <link href="https://github.com/alex-0407/2018/06/06/TSLint%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
-    <id>https://github.com/alex-0407/2018/06/06/TSLint常用配置及使用方法/</id>
+    <link href="https://github.com/alex-0407/2018/06/06/TSLint/"/>
+    <id>https://github.com/alex-0407/2018/06/06/TSLint/</id>
     <published>2018-06-06T05:55:55.000Z</published>
     <updated>2018-06-06T05:57:08.826Z</updated>
     
@@ -194,37 +227,6 @@
     
     
       <category term="ionic" scheme="https://github.com/alex-0407/tags/ionic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue移动端框架到底哪家强</title>
-    <link href="https://github.com/alex-0407/2017/03/06/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
-    <id>https://github.com/alex-0407/2017/03/06/vue移动端框架/</id>
-    <published>2017-03-06T08:30:11.000Z</published>
-    <updated>2018-06-04T01:24:42.040Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><hr></blockquote><h2 id="Weex"><a href="#Weex" class="headerlink" title="Weex"></a>Weex</h2><p>2016年4月21日，阿里巴巴在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。</p><p>Weex</p><p>是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用，为了做到这些，Weex 与 Vue</p><p>合作，使用 Vue 作为上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你甚至可以使用其他框架驱动</p><p>Weex，打造三端一致的 native 应用。</p><p>Weex能够完美兼顾性能与动态性，支持iOS、安卓、YunOS及Web等多端部署。</p><hr>  <a id="more"></a><p>其工作原理</p><p>Weex</p><p>表面上是一个客户端技术，但实际上它串联起了从本地开发环境到云端部署和分发的整个链路。开发者首先可以在本地像撰写 web 页面一样撰写一个</p><p>app 的页面，然后编译成一段 JavaScript 代码，形成 Weex 的一个 JS bundle；在云端，开发者可以把生成的 JS</p><p>bundle 部署上去，然后通过网络请求或预下发的方式传递到用户的移动应用客户端；在移动应用客户端里，WeexSDK 会准备好一个</p><p>JavaScript 引擎，并且在用户打开一个 Weex 页面时执行相应的 JS bundle，并在执行过程中产生各种命令发送到 native</p><p>端进行的界面渲染或数据存储、网络通信、调用设备功能、用户交互响应等移动应用的场景实践；同时，如果用户没有安装移动应用，他仍然可以在浏览器里打开一个相同的</p><p>web 页面，这个页面是使用相同的页面源代码，通过浏览器里的 JavaScript 引擎运行起来的。</p><h2 id="Mint-UI"><a href="#Mint-UI" class="headerlink" title="Mint UI"></a>Mint UI</h2><p>基于 Vue.js 的移动端组件库</p><p>Mint UI 包含丰富的 CSS 和 JS 组件，能够满足日常的移动端开发需要。通过它，可以快速构建出风格统一的页面，提升开发效率。</p><p>真正意义上的按需加载组件。可以只加载声明过的组件及其样式文件，无需再纠结文件体积过大。</p><p>考虑到移动端的性能门槛，Mint UI 采用 CSS3 处理各种动效，避免浏览器进行不必要的重绘和重排，从而使用户获得流畅顺滑的体验。</p><p>依托 Vue.js 高效的组件化方案，Mint UI 做到了轻量化。即使全部引入，压缩后的文件体积也仅有 ~30kb (JS + CSS) gzip。</p><h2 id="vue-carbon"><a href="#vue-carbon" class="headerlink" title="vue-carbon"></a>vue-carbon</h2><p>基于 vuejs 1.0 开发 material design 风格的移动端 WEB UI 库</p><p>使用文档地址 <a href="https://myronliu347.github.io/vue-carbon/book/v0.5.0/index.html" target="_blank" rel="noopener">https://myronliu347.github.io/vue-carbon/book/v0.5.0/index.html</a></p><h2 id="Muse-UI"><a href="#Muse-UI" class="headerlink" title="Muse-UI"></a>Muse-UI</h2><p>基于 Vue 2.0 和 Material Desigin 的 UI 组件库</p><p>特性</p><p>1.组件丰富</p><p>Muse UI 基本实现了 Material Design 设计规范类的所有组件，另外还开发许多的功能性的组件</p><p>2.可定制</p><p>Muse UI 使用less文件，所有的颜色都有一个变量维护，通过编写 less 文件完成自定义主题，另外组件内部也提供一些修改效果的参数</p><p>3.基于 Vue 2.0</p><p>Muse UI 基于 Vue2.0 开发，Vue2.0是当下最快的前端框架之一，小巧，api友好，可用于开发的复杂单页应用</p><h2 id="VUWE"><a href="#VUWE" class="headerlink" title="VUWE"></a>VUWE</h2><p>vuwe是一款基于微信WeUI所开发的，专用于Vue2的组件库。</p><p>它与WeUI完全解耦。用户通过自定义WeUI的样式文件，可以方便地对VUWE实现定制化。</p><h2 id="vue-mobile"><a href="#vue-mobile" class="headerlink" title="vue-mobile"></a>vue-mobile</h2><p>vue-mobile is an UI Framework build with Vue.js for SPA:</p><p>Full Page Structure - header, content, footer</p><p>Page transition support by vue-router</p><p>Bunch of Powerful Components, easy to use and extend</p><p>high performance CSS3 Animation</p><p>1px border for all components - as well as round border</p><p>Write with Vue - the most important</p><h2 id="vonic"><a href="#vonic" class="headerlink" title="vonic"></a>vonic</h2><p>一个基于 vue.js 和 ionic 样式的 UI 框架，用于快速构建移动端单页应用。</p><p>和 ionic 的关系：没有关系，只是在样式方面以 ionic 的 css 文件为基础（做了一些调整）</p><h2 id="vux"><a href="#vux" class="headerlink" title="vux"></a>vux</h2><p>Vux（读音 [v’ju:z]，同views）是基于WeUI和Vue(2.x)开发的移动端UI组件库，主要服务于微信页面。</p><p>基于webpack+vue-loader+vux可以快速开发移动端页面，配合vux-loader方便你在WeUI的基础上定制需要的样式。</p><p>vux-loader保证了组件按需使用，因此不用担心最终打包了整个vux的组件库代码。</p><p>vux并不完全依赖于WeUI，但是尽量保持整体UI样式接近WeUI的设计规范。最初目标是创建一个易用，实用，美观的移动端UI组件库，现在离理想状态还有不少距离，因此需要大家及时反馈问题及贡献代码。</p><p>即使你不使用vux的代码, 但能从源码得到一些参考那么也是件让人高兴的事情。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;hr&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Weex&quot;&gt;&lt;a href=&quot;#Weex&quot; class=&quot;headerlink&quot; title=&quot;Weex&quot;&gt;&lt;/a&gt;Weex&lt;/h2&gt;&lt;p&gt;2016年4月21日，阿里巴巴在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。&lt;/p&gt;
-&lt;p&gt;Weex&lt;/p&gt;
-&lt;p&gt;是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用，为了做到这些，Weex 与 Vue&lt;/p&gt;
-&lt;p&gt;合作，使用 Vue 作为上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你甚至可以使用其他框架驱动&lt;/p&gt;
-&lt;p&gt;Weex，打造三端一致的 native 应用。&lt;/p&gt;
-&lt;p&gt;Weex能够完美兼顾性能与动态性，支持iOS、安卓、YunOS及Web等多端部署。&lt;/p&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="vue" scheme="https://github.com/alex-0407/categories/vue/"/>
-    
-    
-      <category term="vue" scheme="https://github.com/alex-0407/tags/vue/"/>
     
   </entry>
   
@@ -405,6 +407,37 @@
       <category term="angular" scheme="https://github.com/alex-0407/tags/angular/"/>
     
       <category term="angular2" scheme="https://github.com/alex-0407/tags/angular2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue移动端框架到底哪家强</title>
+    <link href="https://github.com/alex-0407/2017/03/06/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    <id>https://github.com/alex-0407/2017/03/06/vue移动端框架/</id>
+    <published>2017-03-06T08:30:11.000Z</published>
+    <updated>2018-06-04T01:24:42.040Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><hr></blockquote><h2 id="Weex"><a href="#Weex" class="headerlink" title="Weex"></a>Weex</h2><p>2016年4月21日，阿里巴巴在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。</p><p>Weex</p><p>是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用，为了做到这些，Weex 与 Vue</p><p>合作，使用 Vue 作为上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你甚至可以使用其他框架驱动</p><p>Weex，打造三端一致的 native 应用。</p><p>Weex能够完美兼顾性能与动态性，支持iOS、安卓、YunOS及Web等多端部署。</p><hr>  <a id="more"></a><p>其工作原理</p><p>Weex</p><p>表面上是一个客户端技术，但实际上它串联起了从本地开发环境到云端部署和分发的整个链路。开发者首先可以在本地像撰写 web 页面一样撰写一个</p><p>app 的页面，然后编译成一段 JavaScript 代码，形成 Weex 的一个 JS bundle；在云端，开发者可以把生成的 JS</p><p>bundle 部署上去，然后通过网络请求或预下发的方式传递到用户的移动应用客户端；在移动应用客户端里，WeexSDK 会准备好一个</p><p>JavaScript 引擎，并且在用户打开一个 Weex 页面时执行相应的 JS bundle，并在执行过程中产生各种命令发送到 native</p><p>端进行的界面渲染或数据存储、网络通信、调用设备功能、用户交互响应等移动应用的场景实践；同时，如果用户没有安装移动应用，他仍然可以在浏览器里打开一个相同的</p><p>web 页面，这个页面是使用相同的页面源代码，通过浏览器里的 JavaScript 引擎运行起来的。</p><h2 id="Mint-UI"><a href="#Mint-UI" class="headerlink" title="Mint UI"></a>Mint UI</h2><p>基于 Vue.js 的移动端组件库</p><p>Mint UI 包含丰富的 CSS 和 JS 组件，能够满足日常的移动端开发需要。通过它，可以快速构建出风格统一的页面，提升开发效率。</p><p>真正意义上的按需加载组件。可以只加载声明过的组件及其样式文件，无需再纠结文件体积过大。</p><p>考虑到移动端的性能门槛，Mint UI 采用 CSS3 处理各种动效，避免浏览器进行不必要的重绘和重排，从而使用户获得流畅顺滑的体验。</p><p>依托 Vue.js 高效的组件化方案，Mint UI 做到了轻量化。即使全部引入，压缩后的文件体积也仅有 ~30kb (JS + CSS) gzip。</p><h2 id="vue-carbon"><a href="#vue-carbon" class="headerlink" title="vue-carbon"></a>vue-carbon</h2><p>基于 vuejs 1.0 开发 material design 风格的移动端 WEB UI 库</p><p>使用文档地址 <a href="https://myronliu347.github.io/vue-carbon/book/v0.5.0/index.html" target="_blank" rel="noopener">https://myronliu347.github.io/vue-carbon/book/v0.5.0/index.html</a></p><h2 id="Muse-UI"><a href="#Muse-UI" class="headerlink" title="Muse-UI"></a>Muse-UI</h2><p>基于 Vue 2.0 和 Material Desigin 的 UI 组件库</p><p>特性</p><p>1.组件丰富</p><p>Muse UI 基本实现了 Material Design 设计规范类的所有组件，另外还开发许多的功能性的组件</p><p>2.可定制</p><p>Muse UI 使用less文件，所有的颜色都有一个变量维护，通过编写 less 文件完成自定义主题，另外组件内部也提供一些修改效果的参数</p><p>3.基于 Vue 2.0</p><p>Muse UI 基于 Vue2.0 开发，Vue2.0是当下最快的前端框架之一，小巧，api友好，可用于开发的复杂单页应用</p><h2 id="VUWE"><a href="#VUWE" class="headerlink" title="VUWE"></a>VUWE</h2><p>vuwe是一款基于微信WeUI所开发的，专用于Vue2的组件库。</p><p>它与WeUI完全解耦。用户通过自定义WeUI的样式文件，可以方便地对VUWE实现定制化。</p><h2 id="vue-mobile"><a href="#vue-mobile" class="headerlink" title="vue-mobile"></a>vue-mobile</h2><p>vue-mobile is an UI Framework build with Vue.js for SPA:</p><p>Full Page Structure - header, content, footer</p><p>Page transition support by vue-router</p><p>Bunch of Powerful Components, easy to use and extend</p><p>high performance CSS3 Animation</p><p>1px border for all components - as well as round border</p><p>Write with Vue - the most important</p><h2 id="vonic"><a href="#vonic" class="headerlink" title="vonic"></a>vonic</h2><p>一个基于 vue.js 和 ionic 样式的 UI 框架，用于快速构建移动端单页应用。</p><p>和 ionic 的关系：没有关系，只是在样式方面以 ionic 的 css 文件为基础（做了一些调整）</p><h2 id="vux"><a href="#vux" class="headerlink" title="vux"></a>vux</h2><p>Vux（读音 [v’ju:z]，同views）是基于WeUI和Vue(2.x)开发的移动端UI组件库，主要服务于微信页面。</p><p>基于webpack+vue-loader+vux可以快速开发移动端页面，配合vux-loader方便你在WeUI的基础上定制需要的样式。</p><p>vux-loader保证了组件按需使用，因此不用担心最终打包了整个vux的组件库代码。</p><p>vux并不完全依赖于WeUI，但是尽量保持整体UI样式接近WeUI的设计规范。最初目标是创建一个易用，实用，美观的移动端UI组件库，现在离理想状态还有不少距离，因此需要大家及时反馈问题及贡献代码。</p><p>即使你不使用vux的代码, 但能从源码得到一些参考那么也是件让人高兴的事情。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;hr&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Weex&quot;&gt;&lt;a href=&quot;#Weex&quot; class=&quot;headerlink&quot; title=&quot;Weex&quot;&gt;&lt;/a&gt;Weex&lt;/h2&gt;&lt;p&gt;2016年4月21日，阿里巴巴在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。&lt;/p&gt;
+&lt;p&gt;Weex&lt;/p&gt;
+&lt;p&gt;是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用，为了做到这些，Weex 与 Vue&lt;/p&gt;
+&lt;p&gt;合作，使用 Vue 作为上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你甚至可以使用其他框架驱动&lt;/p&gt;
+&lt;p&gt;Weex，打造三端一致的 native 应用。&lt;/p&gt;
+&lt;p&gt;Weex能够完美兼顾性能与动态性，支持iOS、安卓、YunOS及Web等多端部署。&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://github.com/alex-0407/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://github.com/alex-0407/tags/vue/"/>
     
   </entry>
   

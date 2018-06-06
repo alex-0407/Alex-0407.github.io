@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2018/06/06/TSLint常用配置及使用方法/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2018/06/07/tslint git pre-commit 配置教程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫码关注">
@@ -321,7 +321,176 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/mini-blog/2018/06/06/TSLint常用配置及使用方法/" itemprop="url">TSLint常用配置及使用方法</a></h1>
+                <a class="post-title-link" href="/mini-blog/2018/06/07/tslint git pre-commit 配置教程/" itemprop="url">tslint 与 git pre-commit 配置教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-07T16:30:11+08:00">
+                2018-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/mini-blog/categories/tslint/" itemprop="url" rel="index">
+                    <span itemprop="name">tslint</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/mini-blog/2018/06/07/tslint git pre-commit 配置教程/" class="leancloud_visitors" data-flag-title="tslint 与 git pre-commit 配置教程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<hr>
+</blockquote>
+<h2 id="tslint-配合pre-commit的意义"><a href="#tslint-配合pre-commit的意义" class="headerlink" title="tslint 配合pre-commit的意义"></a>tslint 配合pre-commit的意义</h2><p>为什么用pre-commit 加 tslint（jshint，eslint原理都类似），因为在项目中我们会经常忘记主动的去做代码检查，虽然结合webpack各种构建工具下，存在*slint报错，项目会跑不起来。但在某些情况下，可能会因为着急，或者其他原因，没有去观察项目运行的情况就仓促提交。团队开发的情景下，可能会成为别人的麻烦。而pre-commit tslint解决的需求既是：拒绝向仓库提交错误代码。</p>
+<h2 id="git-hooks"><a href="#git-hooks" class="headerlink" title="git hooks"></a>git hooks</h2><p>在配置tslint pre commit之前，首先需要了解git hooks，正如它的名字所示，这是一个关于git 操作的钩子，比如我们想要在做远程仓库推送时，那就会触发pre-push这个钩子，然后在这个钩子中写下自己想做的事。git hooks的配置就在项目.git文件夹下面的hooks文件夹中。</p>
+<p>在写相关的钩子函数时，需要注意的是，将钩子后面的sample后缀去掉，代码才会生效。</p>
+<p>比如，本文中用到的pre-commit这个钩子。 </p>
+<p>更多关于git hooks的介绍，请参考：<a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" target="_blank" rel="noopener">https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks</a></p>
+<p>下面介绍如何配置：</p>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/mini-blog/2018/06/07/tslint git pre-commit 配置教程/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2018/06/06/TSLint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫码关注">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/mini-blog/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="alex的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/mini-blog/2018/06/06/TSLint/" itemprop="url">TSLint常用配置及使用方法</a></h1>
         
 
         <div class="post-meta">
@@ -373,7 +542,7 @@
 
           
           
-             <span id="/mini-blog/2018/06/06/TSLint常用配置及使用方法/" class="leancloud_visitors" data-flag-title="TSLint常用配置及使用方法">
+             <span id="/mini-blog/2018/06/06/TSLint/" class="leancloud_visitors" data-flag-title="TSLint常用配置及使用方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -418,7 +587,7 @@
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/mini-blog/2018/06/06/TSLint常用配置及使用方法/#more" rel="contents">
+            <a class="btn" href="/mini-blog/2018/06/06/TSLint/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1302,175 +1471,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2017/03/06/vue移动端框架/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫码关注">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/mini-blog/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="alex的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/mini-blog/2017/03/06/vue移动端框架/" itemprop="url">vue移动端框架到底哪家强</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T16:30:11+08:00">
-                2017-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/mini-blog/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/mini-blog/2017/03/06/vue移动端框架/" class="leancloud_visitors" data-flag-title="vue移动端框架到底哪家强">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<hr>
-</blockquote>
-<h2 id="Weex"><a href="#Weex" class="headerlink" title="Weex"></a>Weex</h2><p>2016年4月21日，阿里巴巴在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。</p>
-<p>Weex</p>
-<p>是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用，为了做到这些，Weex 与 Vue</p>
-<p>合作，使用 Vue 作为上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你甚至可以使用其他框架驱动</p>
-<p>Weex，打造三端一致的 native 应用。</p>
-<p>Weex能够完美兼顾性能与动态性，支持iOS、安卓、YunOS及Web等多端部署。</p>
-<hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/mini-blog/2017/03/06/vue移动端框架/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2017/03/06/webpack loader全家桶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2013,7 +2013,7 @@
               
                 <a href="/mini-blog/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

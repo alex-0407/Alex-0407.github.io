@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="ionic,ionic3," />
+  <meta name="keywords" content="tslint," />
 
 
 
@@ -75,18 +75,21 @@
 
 
 
-<meta name="description" content="Ionic3新特性： Angular 4.0新的版本下，改进 AOT 编译器，分离 animations 包，缩小生成后的代码量，运行更快，改进ngIf 和ngFor 等具体内容可以访问http://angularjs.blogspot.sg/2017/03/angular-400-now-available.html来查看。 typescript 2.1, 2.2的支持这一次的更新将提升t">
-<meta name="keywords" content="ionic,ionic3">
+<meta name="description" content="TSLint核心规则及相关库TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：  tslint-eslint-rules——ionic项目默认使用这个 codelyzer——angular项目默认使用这个 还有很多">
+<meta name="keywords" content="tslint">
 <meta property="og:type" content="article">
-<meta property="og:title" content="你不得不知的Ionic3新特性">
-<meta property="og:url" content="https://github.com/alex-0407/2017/03/06/你不得不知的Ionic3新特性/index.html">
+<meta property="og:title" content="TSLint常用配置及使用方法">
+<meta property="og:url" content="https://github.com/alex-0407/2018/06/06/TSLint/index.html">
 <meta property="og:site_name" content="alex的博客">
-<meta property="og:description" content="Ionic3新特性： Angular 4.0新的版本下，改进 AOT 编译器，分离 animations 包，缩小生成后的代码量，运行更快，改进ngIf 和ngFor 等具体内容可以访问http://angularjs.blogspot.sg/2017/03/angular-400-now-available.html来查看。 typescript 2.1, 2.2的支持这一次的更新将提升t">
+<meta property="og:description" content="TSLint核心规则及相关库TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：  tslint-eslint-rules——ionic项目默认使用这个 codelyzer——angular项目默认使用这个 还有很多">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-04T01:24:42.050Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3100736-ae0ab7129b2d7469.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3100736-aad1e6a8a61076d7.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2018-06-06T05:57:08.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你不得不知的Ionic3新特性">
-<meta name="twitter:description" content="Ionic3新特性： Angular 4.0新的版本下，改进 AOT 编译器，分离 animations 包，缩小生成后的代码量，运行更快，改进ngIf 和ngFor 等具体内容可以访问http://angularjs.blogspot.sg/2017/03/angular-400-now-available.html来查看。 typescript 2.1, 2.2的支持这一次的更新将提升t">
+<meta name="twitter:title" content="TSLint常用配置及使用方法">
+<meta name="twitter:description" content="TSLint核心规则及相关库TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：  tslint-eslint-rules——ionic项目默认使用这个 codelyzer——angular项目默认使用这个 还有很多">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3100736-ae0ab7129b2d7469.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/alex-0407/2017/03/06/你不得不知的Ionic3新特性/"/>
+  <link rel="canonical" href="https://github.com/alex-0407/2018/06/06/TSLint/"/>
 
 
 
 
 
-  <title>你不得不知的Ionic3新特性 | alex的博客</title>
+  <title>TSLint常用配置及使用方法 | alex的博客</title>
   
 
 
@@ -303,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2017/03/06/你不得不知的Ionic3新特性/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/mini-blog/2018/06/06/TSLint/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫码关注">
@@ -320,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">你不得不知的Ionic3新特性</h1>
+          <h1 class="post-title" itemprop="name headline">TSLint常用配置及使用方法</h1>
         
 
         <div class="post-meta">
@@ -332,8 +335,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T16:30:11+08:00">
-                2017-03-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-06T13:55:55+08:00">
+                2018-06-06
               </time>
             
 
@@ -355,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/mini-blog/categories/ionic3/" itemprop="url" rel="index">
-                    <span itemprop="name">ionic3</span>
+                  <a href="/mini-blog/categories/tslint/" itemprop="url" rel="index">
+                    <span itemprop="name">tslint</span>
                   </a>
                 </span>
 
@@ -372,7 +375,7 @@
 
           
           
-             <span id="/mini-blog/2017/03/06/你不得不知的Ionic3新特性/" class="leancloud_visitors" data-flag-title="你不得不知的Ionic3新特性">
+             <span id="/mini-blog/2018/06/06/TSLint/" class="leancloud_visitors" data-flag-title="TSLint常用配置及使用方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,21 +409,55 @@
         <blockquote>
 <hr>
 </blockquote>
-<p>Ionic3新特性：</p>
-<h2 id="Angular-4-0"><a href="#Angular-4-0" class="headerlink" title="Angular 4.0"></a>Angular 4.0</h2><p>新的版本下，改进 AOT 编译器，分离 animations 包，缩小生成后的代码量，运行更快，改进ngIf 和ngFor 等具体内容可以访问<a href="http://angularjs.blogspot.sg/2017/03/angular-400-now-available.html来查看。" target="_blank" rel="noopener">http://angularjs.blogspot.sg/2017/03/angular-400-now-available.html来查看。</a></p>
-<h2 id="typescript-2-1-2-2的支持"><a href="#typescript-2-1-2-2的支持" class="headerlink" title="typescript 2.1, 2.2的支持"></a>typescript 2.1, 2.2的支持</h2><p>这一次的更新将提升typescript应用构建和类型检查的速度并且引入了对mix-in的支持等具体可以访问<a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html来查看。" target="_blank" rel="noopener">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html来查看。</a></p>
+<h2 id="TSLint核心规则及相关库"><a href="#TSLint核心规则及相关库" class="headerlink" title="TSLint核心规则及相关库"></a>TSLint核心规则及相关库</h2><p>TSLint已经提供了一些核心规则，但是还不够，于是有人用TSLint提供的自定义接口又自定义了许多规则。如：</p>
+<ul>
+<li>tslint-eslint-rules——ionic项目默认使用这个</li>
+<li>codelyzer——angular项目默认使用这个</li>
+<li><p>还有很多</p>
 <hr>
- <a id="more"></a>
-<h2 id="IonicPage装饰器"><a href="#IonicPage装饰器" class="headerlink" title="@IonicPage装饰器"></a>@IonicPage装饰器</h2><p>ionic2中导航器不是基于url的，如果想使用url访问就要通过DeepLinker来实现，这是非常麻烦的，而在新版本我们可以通过@IonicPage装饰器来实现。并且可以更轻松的在项目中设置延迟加载，设置延迟加载页面的优先级，并为每个页面自定义配置。</p>
-<h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><p>Ionic3.0版本开始，支持了延迟加载，我们可以将某些模块设置为延时加载，只有用户打开相关的页面的时候，这个模块所在的js才会被下载，这样能减少用户初次下载的文件的大小。</p>
-<p>总的来说，升级Ionic3将使我们的项目变得更小，更快，而更吸引我们的则是懒加载，不仅仅是加快了app首次的启动时间，更多的是配合上@IonicPage可以非常方便部署web版本，让每次进入不用去请求庞大的js文件，做到首屏的快速加载，write once run anywhere，这些就是我们需要升级Ionic3的原因。</p>
-<p>那么，问题来了，怎样升级到Ionic3呢？</p>
-<p>首先访问<a href="https://github.com/ionic-team/ionic2-app-base/复制package.json的dependencies和devDependencies到自己的项目中后删除掉原本的node_modules文件夹，运行npm">https://github.com/ionic-team/ionic2-app-base/复制package.json的dependencies和devDependencies到自己的项目中后删除掉原本的node_modules文件夹，运行npm</a> install重新下载依赖。</p>
-<p>将BrowserModule加入你的app/app.module.ts<br>import { BrowserModule } from ‘@angular/platform-browser’;<br>在app.module.ts中将BrowserModule添加进imports中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imports: [   BrowserModule,   IonicModule.forRoot(MyApp) ],</span><br></pre></td></tr></table></figure>
-<p>由于ionic3将ionic-native拆开成个各种小的包@ionic-native/*,splash-screen，status-bar等之前ionic-native中的模块都需要重新引入具体可以参照<a href="http://ionicframework.com/docs/native/来对号入座。" target="_blank" rel="noopener">http://ionicframework.com/docs/native/来对号入座。</a></p>
-<p>最后打开cmd控制台运行ionic serve</p>
-<p>开始享受ionic3带来的改变吧！</p>
+</li>
+</ul>
+  <a id="more"></a>
+<h2 id="腾讯团队开源项目tslint-config-alloy"><a href="#腾讯团队开源项目tslint-config-alloy" class="headerlink" title="腾讯团队开源项目tslint-config-alloy"></a>腾讯团队开源项目tslint-config-alloy</h2><p>现在有了大量校验规则，如何使用如何配置呢。我们使用了腾讯团队的开源项目tslint-config-alloy，它的配置原则：</p>
+<ul>
+<li>能够帮助发现代码错误的规则，全部开启</li>
+<li>配置不应该依赖于某个具体项目，而应尽可能的合理</li>
+<li>帮助保持团队的代码风格统一，而不是限制开发体验</li>
+</ul>
+<p>如果觉得tslint-config-alloy提供的配置不合理，我们就可以在本文最开始提到的tslint.json文件(ionic项目根目录下)中覆盖它的配置</p>
+<h2 id="如何使用tslint-config-alloy"><a href="#如何使用tslint-config-alloy" class="headerlink" title="如何使用tslint-config-alloy"></a>如何使用tslint-config-alloy</h2><ul>
+<li><p>项目安装依赖：npm install –save-dev tslint-eslint-rules tslint-config-alloy</p>
+<p> 其中tslint-eslint-rules是规则的实现，它的规则已经继承了tslint，其中tslint-config-alloy是规则的配置，我们的配置继承这里的配置。</p>
+</li>
+<li><p>配置tslint.json内容如下</p>
+<p>其中rulesDirectory指定规则的实现目录，可以配置多个，如你自定义的规则的目录；其中extends指定我们继承的配置，这里继承tslint-config-alloy，我们可以在rules中添加配置和覆盖tslint-config-alloy提供的配置。</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"tslint-config-alloy"</span>,</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    "no-parameter-properties":false, // 禁止给类的构造函数的参数添加修饰符</span><br><span class="line">    "triple-equals":false,</span><br><span class="line">    "no-debugger": false,</span><br><span class="line">    // 禁止行尾有空格</span><br><span class="line">    "no-trailing-whitespace": false,</span><br><span class="line">    "member-ordering":false,</span><br><span class="line">    "no-this-assignment": [true, &#123;"allowed-names": ["^self$","^that$"], "allow-destructuring": true&#125;],</span><br><span class="line">    // 必须使用箭头函数，除非是单独的函数声明或是命名函数</span><br><span class="line">    "only-arrow-functions": [</span><br><span class="line">      false,</span><br><span class="line">      "allow-declarations",</span><br><span class="line">      <span class="string">"allow-named-functions"</span></span><br><span class="line">    ],</span><br><span class="line">    // 禁止出现空代码块，允许 catch 是空代码块</span><br><span class="line">    "no-empty": [</span><br><span class="line">      false,</span><br><span class="line">      <span class="string">"allow-empty-catch"</span></span><br><span class="line">    ],</span><br><span class="line">    // 禁止无用的类型断言</span><br><span class="line">    "no-unnecessary-type-assertion": false,</span><br><span class="line">    // 使用 return; 而不是 return undefined;</span><br><span class="line">    "return-undefined": false,</span><br><span class="line">    // 禁止对 array 使用 for in 循环</span><br><span class="line">    "no-for-in-array": false,</span><br><span class="line">    "comment-format": [true, "check-space"], // 单行注释格式化规则</span><br><span class="line">  &#125;,</span><br><span class="line">  "rulesDirectory": [</span><br><span class="line">    <span class="string">"node_modules/tslint-eslint-rules/dist/rules"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决"><a href="#tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决" class="headerlink" title="tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决"></a>tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决</h2><p>   这时候要么在tslint.json重新定义规则，要么修改ide配置，如：</p>
+<ol>
+<li><p>webstorm设置import自动导入的内容为单引号<br><img src="https://upload-images.jianshu.io/upload_images/3100736-ae0ab7129b2d7469.gif?imageMogr2/auto-orient/strip" alt="webstorm-punctation.gif"></p>
+</li>
+<li><p>webstorm设置import自动导入大括号两边添加空格<br><img src="https://upload-images.jianshu.io/upload_images/3100736-aad1e6a8a61076d7.gif?imageMogr2/auto-orient/strip" alt="webstorm-spaces.gif"></p>
+<p>默认自动生成格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;AbstractControl&#125; from &apos;@angular/forms&apos;;</span><br></pre></td></tr></table></figure>
+<p>想要格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; AbstractControl &#125; from &apos;@angular/forms&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li>其他配置自行百度</li>
+<li>实际开发过程中可以先不启用TSLint，每次提交代码前或测试开发的代码时在启用并修复问题</li>
+</ol>
+<h2 id="TSLint注释标记"><a href="#TSLint注释标记" class="headerlink" title="TSLint注释标记"></a>TSLint注释标记</h2><ul>
+<li><p>ts文件中使用以下注释来临时忽略规则出现的错误，参考这里</p>
+<p>  /<em> tslint:disable </em>/——忽略该行以下所有代码出现的错误提示</p>
+<p>  /<em> tslint:enable </em>/——当前ts文件重新启用tslint</p>
+<p>  // tslint:disable-line——忽略当前行代码出现的错误提示</p>
+<p>  // tslint:disable-next-line——忽略下一行代码出现的错误提示</p>
+</li>
+</ul>
+<h2 id="常用的tslint配置项"><a href="#常用的tslint配置项" class="headerlink" title="常用的tslint配置项"></a>常用的tslint配置项</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 禁止给类的构造函数的参数添加修饰符</span><br><span class="line">  "no-parameter-properties": false,</span><br><span class="line">  // 禁止使用 debugger</span><br><span class="line">  "no-debugger": false,</span><br><span class="line">  // 禁止行尾有空格</span><br><span class="line">  "no-trailing-whitespace": false,</span><br><span class="line">  // 禁止无用的表达式</span><br><span class="line">  "no-unused-expression": true,</span><br><span class="line">  // 定义过的变量必须使用</span><br><span class="line">  "no-unused-variable": true,</span><br><span class="line">  // 变量必须先定义后使用</span><br><span class="line">  "no-use-before-declare": true,</span><br><span class="line">  // 禁止使用 var</span><br><span class="line">  "no-var-keyword": true,</span><br><span class="line">  // 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外</span><br><span class="line">  "triple-equals": true,</span><br><span class="line">  // 指定类成员的排序规则</span><br><span class="line">  "member-ordering": false,</span><br><span class="line">  // 禁止将 this 赋值给其他变量，除非是解构赋值</span><br><span class="line">  "no-this-assignment": [</span><br><span class="line">    false,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"allowed-names"</span>: [</span><br><span class="line">        <span class="string">"^self$"</span>,</span><br><span class="line">        <span class="string">"^that$"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"allow-destructuring"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  // 必须使用箭头函数，除非是单独的函数声明或是命名函数</span><br><span class="line">  "only-arrow-functions": [</span><br><span class="line">    true,</span><br><span class="line">    "allow-declarations",</span><br><span class="line">    <span class="string">"allow-named-functions"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止出现空代码块，允许 catch 是空代码块</span><br><span class="line">  "no-empty": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"allow-empty-catch"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止无用的类型断言</span><br><span class="line">  "no-unnecessary-type-assertion": true,</span><br><span class="line">  // 使用 return; 而不是 return undefined;</span><br><span class="line">  "return-undefined": true,</span><br><span class="line">  // 禁止对 array 使用 for in 循环</span><br><span class="line">  "no-for-in-array": true,</span><br><span class="line">  "comment-format": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"check-space"</span></span><br><span class="line">  ],</span><br><span class="line">  // 单行注释格式化规则</span><br><span class="line">  // 定义函数时如果用到了覆写，则必须将覆写的函数写到一起</span><br><span class="line">  "adjacent-overload-signatures": true,</span><br><span class="line">  // 禁止对函数的参数重新赋值</span><br><span class="line">  "no-parameter-reassignment": true,</span><br><span class="line">  // if 后面必须有 &#123;，除非是单行 if</span><br><span class="line">  "curly": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-same-line"</span></span><br><span class="line">  ],</span><br><span class="line">  // for in 内部必须有 hasOwnProperty</span><br><span class="line">  "forin": true,</span><br><span class="line">  // 禁止在分支条件判断中有赋值操作</span><br><span class="line">  "no-conditional-assignment": true,</span><br><span class="line">  // 禁止使用 new 来生成 String, Number 或 Boolean</span><br><span class="line">  "no-construct": true,</span><br><span class="line">  // 禁止 super 在一个构造函数中出现两次</span><br><span class="line">  "no-duplicate-super": true,</span><br><span class="line">  // 禁止在 switch 语句中出现重复测试表达式的 case</span><br><span class="line">  "no-duplicate-switch-case": true,</span><br><span class="line">  // 禁止出现重复的变量定义或函数参数名</span><br><span class="line">  "no-duplicate-variable": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"check-parameters"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用 eval</span><br><span class="line">  "no-eval": true,</span><br><span class="line">  // 禁止对对象字面量进行类型断言（断言成 any 是允许的）</span><br><span class="line">  "no-object-literal-type-assertion": true,</span><br><span class="line">  // 禁止没必要的 return await</span><br><span class="line">  "no-return-await": true,</span><br><span class="line">  // 禁止在数组中出现连续的逗号，如 let foo = [,,]</span><br><span class="line">  "no-sparse-arrays": true,</span><br><span class="line">  // 禁止 throw 字符串，必须 throw 一个 Error 对象</span><br><span class="line">  "no-string-throw": true,</span><br><span class="line">  // switch 的 case 必须 return 或 break</span><br><span class="line">  "no-switch-case-fall-through": true,</span><br><span class="line">  // 使用实例的方法时，必须 bind 到实例上</span><br><span class="line">  "no-unbound-method": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-static"</span></span><br><span class="line">  ],</span><br><span class="line">  // 使用 &#123; ...foo, bar: 1 &#125; 代替 Object.assign(&#123;&#125;, foo, &#123; bar: 1 &#125;)</span><br><span class="line">  // 前者的类型检查更完善</span><br><span class="line">  "prefer-object-spread": true,</span><br><span class="line">  // parseInt 必须传入第二个参数</span><br><span class="line">  "radix": true,</span><br><span class="line">  // 必须使用 isNaN(foo) 而不是 foo === NaN</span><br><span class="line">  "use-isnan": true,</span><br><span class="line">  //</span><br><span class="line">  //</span><br><span class="line">  // 可维护性</span><br><span class="line">  // 这些规则可以增加代码的可维护性</span><br><span class="line">  //</span><br><span class="line">  // 禁止函数的循环复杂度超过 20，https://en.wikipedia.org/wiki/Cyclomatic_complexity</span><br><span class="line">  "cyclomatic-complexity": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">20</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用废弃（被标识了 @deprecated）的 API</span><br><span class="line">  "deprecation": true,</span><br><span class="line">  // 一个缩进必须用四个空格替代</span><br><span class="line">  "indent": [</span><br><span class="line">    true,</span><br><span class="line">    "spaces",</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止出现重复的 import</span><br><span class="line">  "no-duplicate-imports": true,</span><br><span class="line">  // 禁止一个文件中出现多个相同的 namespace</span><br><span class="line">  "no-mergeable-namespace": true,</span><br><span class="line">  // 文件类型必须时 utf-8</span><br><span class="line">  "encoding": true,</span><br><span class="line">  // import 语句中，关键字之间的间距必须是一个空格</span><br><span class="line">  "import-spacing": true,</span><br><span class="line">  // 接口可以 implement extend 和 merge</span><br><span class="line">  "interface-over-type-literal": true,</span><br><span class="line">  // new 后面只必须有一个空格</span><br><span class="line">  "new-parens": true,</span><br><span class="line">  // 类型断言必须使用 as Type，禁止使用 &lt;Type&gt;</span><br><span class="line">  // &lt;Type&gt; 容易被理解为 jsx</span><br><span class="line">  "no-angle-bracket-type-assertion": true,</span><br><span class="line">  // 禁止连续超过三行空行</span><br><span class="line">  "no-consecutive-blank-lines": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">3</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用特殊空白符（比如全角空格）</span><br><span class="line">  "no-irregular-whitespace": true,</span><br><span class="line">  // 禁止使用 JSDoc，因为 TypeScirpt 已经包含了大部分功能</span><br><span class="line">  "no-redundant-jsdoc": true,</span><br><span class="line">  // 禁止使用三斜杠引入类型定义文件</span><br><span class="line">  "no-reference-import": true,</span><br><span class="line">  // 禁止变量定义时赋值为 undefined</span><br><span class="line">  "no-unnecessary-initializer": true,</span><br><span class="line">  // 小数必须以 0. 开头，禁止以 . 开头，并且不能以 0 结尾</span><br><span class="line">  "number-literal-format": true,</span><br><span class="line">  // 必须使用 a = &#123;b&#125; 而不是 a = &#123;b: b&#125;</span><br><span class="line">  "object-literal-shorthand": true,</span><br><span class="line">  // 变量申明必须每行一个，for 循环的初始条件中除外</span><br><span class="line">  "one-variable-per-declaration": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-for-loop"</span></span><br><span class="line">  ],</span><br><span class="line">  // if 后的 &#123; 禁止换行</span><br><span class="line">  "one-line": true,</span><br><span class="line">  // 必须使用单引号，jsx 中必须使用双引号</span><br><span class="line">  "quotemark": [</span><br><span class="line">    true,</span><br><span class="line">    "single",</span><br><span class="line">    "jsx-double",</span><br><span class="line">    "avoid-template",</span><br><span class="line">    <span class="string">"avoid-escape"</span></span><br><span class="line">  ],</span><br><span class="line">  // 行尾必须有分号</span><br><span class="line">  "semicolon": [</span><br><span class="line">    true,</span><br><span class="line">    "always",</span><br><span class="line">    <span class="string">"ignore-interfaces"</span></span><br><span class="line">  ],</span><br><span class="line">  // 函数名前必须有空格</span><br><span class="line">  "space-before-function-paren": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"asyncArrow"</span></span><br><span class="line">  ],</span><br><span class="line">  // 括号内首尾禁止有空格</span><br><span class="line">  "space-within-parens": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">0</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止 finally 内出现 return, continue, break, throw 等</span><br><span class="line">  // finally 会比 catch 先执行</span><br><span class="line">  "no-unsafe-finally": true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -490,9 +527,7 @@
       
         <div class="post-tags">
           
-            <a href="/mini-blog/tags/ionic/" rel="tag"># ionic</a>
-          
-            <a href="/mini-blog/tags/ionic3/" rel="tag"># ionic3</a>
+            <a href="/mini-blog/tags/tslint/" rel="tag"># tslint</a>
           
         </div>
       
@@ -505,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/mini-blog/2017/03/06/认识Ionic 2/" rel="next" title="认识Ionic 2">
-                <i class="fa fa-chevron-left"></i> 认识Ionic 2
+              <a href="/mini-blog/2018/06/06/深入理解js中的this/" rel="next" title="深入理解普通函数中的this及ES6箭头函数的this">
+                <i class="fa fa-chevron-left"></i> 深入理解普通函数中的this及ES6箭头函数的this
               </a>
             
           </div>
@@ -515,8 +550,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/mini-blog/2017/03/06/nodejs实时编译和动态调试/" rel="prev" title="两种方法轻松搞定NodeJS实时编译，动态调试">
-                两种方法轻松搞定NodeJS实时编译，动态调试 <i class="fa fa-chevron-right"></i>
+              <a href="/mini-blog/2018/06/07/tslint git pre-commit 配置教程/" rel="prev" title="tslint 与 git pre-commit 配置教程">
+                tslint 与 git pre-commit 配置教程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -711,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Angular-4-0"><span class="nav-number">1.</span> <span class="nav-text">Angular 4.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typescript-2-1-2-2的支持"><span class="nav-number">2.</span> <span class="nav-text">typescript 2.1, 2.2的支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IonicPage装饰器"><span class="nav-number">3.</span> <span class="nav-text">@IonicPage装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#懒加载"><span class="nav-number">4.</span> <span class="nav-text">懒加载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TSLint核心规则及相关库"><span class="nav-number">1.</span> <span class="nav-text">TSLint核心规则及相关库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#腾讯团队开源项目tslint-config-alloy"><span class="nav-number">2.</span> <span class="nav-text">腾讯团队开源项目tslint-config-alloy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用tslint-config-alloy"><span class="nav-number">3.</span> <span class="nav-text">如何使用tslint-config-alloy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决"><span class="nav-number">4.</span> <span class="nav-text">tslint代码风格规则和ide默认的格式化代码风格存在冲突如何解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TSLint注释标记"><span class="nav-number">5.</span> <span class="nav-text">TSLint注释标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的tslint配置项"><span class="nav-number">6.</span> <span class="nav-text">常用的tslint配置项</span></a></li></ol></div>
             
 
           </div>
