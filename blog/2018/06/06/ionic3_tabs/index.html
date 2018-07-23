@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="Tabs（选项卡）ion-tabs 在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以  的方式写，是单个 Tab 组件的容器。每个  对于 NavControll 来说是公开的组件。 那么tabs有哪些属性和事件呢？下面详细介绍一下:">
+<meta name="description" content="Tabs（选项卡） ion-tabs  在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以  的方式写，是单个 Tab 组件的容器。每个  对于 NavControll 来说是公开的组件。  那么tabs有哪些属性和事件呢？下面详细介绍一下:">
 <meta name="keywords" content="ionic,ionic3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ionic3之tabs用法详解,你知道的和不知道的都在这儿">
-<meta property="og:url" content="https://github.com/alex-0407/2018/06/06/ionic3之tabs用法详解/index.html">
+<meta property="og:url" content="https://github.com/alex-0407/2018/06/06/ionic3_tabs/index.html">
 <meta property="og:site_name" content="alex的博客">
-<meta property="og:description" content="Tabs（选项卡）ion-tabs 在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以  的方式写，是单个 Tab 组件的容器。每个  对于 NavControll 来说是公开的组件。 那么tabs有哪些属性和事件呢？下面详细介绍一下:">
+<meta property="og:description" content="Tabs（选项卡） ion-tabs  在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以  的方式写，是单个 Tab 组件的容器。每个  对于 NavControll 来说是公开的组件。  那么tabs有哪些属性和事件呢？下面详细介绍一下:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-07T02:18:09.755Z">
+<meta property="og:updated_time" content="2018-07-23T06:39:44.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ionic3之tabs用法详解,你知道的和不知道的都在这儿">
-<meta name="twitter:description" content="Tabs（选项卡）ion-tabs 在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以  的方式写，是单个 Tab 组件的容器。每个  对于 NavControll 来说是公开的组件。 那么tabs有哪些属性和事件呢？下面详细介绍一下:">
+<meta name="twitter:description" content="Tabs（选项卡） ion-tabs  在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以  的方式写，是单个 Tab 组件的容器。每个  对于 NavControll 来说是公开的组件。  那么tabs有哪些属性和事件呢？下面详细介绍一下:">
 
 
 
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/alex-0407/2018/06/06/ionic3之tabs用法详解/"/>
+  <link rel="canonical" href="https://github.com/alex-0407/2018/06/06/ionic3_tabs/"/>
 
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/blog/2018/06/06/ionic3之tabs用法详解/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/alex-0407/blog/2018/06/06/ionic3_tabs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫码关注">
@@ -372,7 +372,7 @@
 
           
           
-             <span id="/blog/2018/06/06/ionic3之tabs用法详解/" class="leancloud_visitors" data-flag-title="ionic3之tabs用法详解,你知道的和不知道的都在这儿">
+             <span id="/blog/2018/06/06/ionic3_tabs/" class="leancloud_visitors" data-flag-title="ionic3之tabs用法详解,你知道的和不知道的都在这儿">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,29 +403,98 @@
       
 
       
-        <blockquote>
-<hr>
-</blockquote>
-<p>Tabs（选项卡）<br>ion-tabs</p>
-<p>在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以 <ion-tabs> 的方式写，是单个 Tab 组件的容器。每个 <ion-tab> 对于 NavControll 来说是公开的组件。</ion-tab></ion-tabs></p>
-<p>那么tabs有哪些属性和事件呢？下面详细介绍一下: </p>
-<hr>
+        
+Tabs（选项卡）
+ion-tabs
+
+在一个 app 中，Tabs 使得在不同页面和功能之间导航更加容易。Tabs 组件，以 <ion-tabs> 的方式写，是单个 Tab 组件的容器。每个 <ion-tab> 对于 NavControll 来说是公开的组件。
+
+那么tabs有哪些属性和事件呢？下面详细介绍一下:
+
  <a id="more"></a>
-<h2 id="属性和事件详解"><a href="#属性和事件详解" class="headerlink" title="属性和事件详解"></a>属性和事件详解</h2><table><br>  <tr><br>    <th>标签</th><br>    <th>类型</th><br>    <th>作用</th><br>  </tr><br>  <tr><br>    <td>[root]</td><br>    <td>Page</td><br>    <td>指定tab希望加载的页面</td><br>  </tr><br>  <tr><br>    <td>tabTitle</td><br>    <td>string</td><br>    <td>tab上显示的标题</td><br>  </tr><br>  <tr><br>    <td>tabIcon</td><br>    <td>string</td><br>    <td>tab上显示的图标</td><br>  </tr><br>  <tr><br>    <td>tabBadge</td><br>    <td>string</td><br>    <td>tab上显示的角标数字</td><br>  </tr><br>  <tr><br>    <td>tabBadgeStyle</td><br>    <td>string</td><br>    <td>角标数字的颜色</td><br>  </tr><br> <tr><br>   <td>enabled</td><br>   <td>boolean</td><br>   <td>tab是否可用，默认为true</td><br> </tr><br> <tr><br>   <td>show</td><br>   <td>boolean</td><br>   <td>tab是否显示</td><br> </tr><br> <tr><br>   <td>[rootParams]</td><br>   <td>object</td><br>   <td>tab上传递的参数</td><br> </tr><br> <tr><br>   <td>tabUrlPath</td><br>   <td>string</td><br>   <td>点击tab时跳转的页面url</td><br> </tr><br> <tr><br>   <td>swipeBackEnabled</td><br>   <td>boolean</td><br>   <td>是否支持滑动后退</td><br> </tr><br> <tr><br>   <td>tabsHideOnSubPages</td><br>   <td>boolean</td><br>   <td>在子页面是否隐藏</td><br> </tr><br> <tr><br>   <td>(ionSelect)</td><br>   <td>方法</td><br>   <td>tab select 方法</td><br> </tr><br></table>
+ 
+<h3> 属性和事件详解 </h3>
 
-<ul>
-<li>示例html代码如下:</li>
-</ul>
+<table>
+  <tr> 
+    <th>标签</th> 
+    <th>类型</th> 
+    <th>作用</th> 
+  </tr>
+  <tr> 
+    <td>[root]</td> 
+    <td>Page</td> 
+    <td>指定tab希望加载的页面</td> 
+  </tr> 
+  <tr> 
+    <td>tabTitle</td> 
+    <td>string</td> 
+    <td>tab上显示的标题</td> 
+  </tr> 
+  <tr> 
+    <td>tabIcon</td> 
+    <td>string</td> 
+    <td>tab上显示的图标</td> 
+  </tr> 
+  <tr> 
+    <td>tabBadge</td> 
+    <td>string</td> 
+    <td>tab上显示的角标数字</td> 
+  </tr> 
+  <tr> 
+    <td>tabBadgeStyle</td> 
+    <td>string</td> 
+    <td>角标数字的颜色</td> 
+  </tr>
+ <tr> 
+   <td>enabled</td> 
+   <td>boolean</td> 
+   <td>tab是否可用，默认为true</td> 
+ </tr> 
+ <tr> 
+   <td>show</td> 
+   <td>boolean</td> 
+   <td>tab是否显示</td> 
+ </tr> 
+ <tr> 
+   <td>[rootParams]</td> 
+   <td>object</td> 
+   <td>tab上传递的参数</td> 
+ </tr>  
+ <tr> 
+   <td>tabUrlPath</td> 
+   <td>string</td> 
+   <td>点击tab时跳转的页面url</td> 
+ </tr>  
+ <tr> 
+   <td>swipeBackEnabled</td> 
+   <td>boolean</td> 
+   <td>是否支持滑动后退</td> 
+ </tr>  
+ <tr> 
+   <td>tabsHideOnSubPages</td> 
+   <td>boolean</td> 
+   <td>在子页面是否隐藏</td> 
+ </tr>  
+ <tr> 
+   <td>(ionSelect)</td> 
+   <td>方法</td> 
+   <td>tab select 方法</td> 
+ </tr>  
+</table>
+
+* 示例html代码如下:
+
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-tabs</span> #<span class="attr">mainTabs</span> (<span class="attr">ionChange</span>)=<span class="string">"changeTabs()"</span> <span class="attr">color</span>=<span class="string">"danger"</span> <span class="attr">tabsHighlight</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-tab</span> [<span class="attr">root</span>]=<span class="string">"tab1Root"</span> [<span class="attr">rootParams</span>]=<span class="string">"homeParams"</span> <span class="attr">tabTitle</span>=<span class="string">"Home"</span> <span class="attr">tabIcon</span>=<span class="string">"home"</span>&gt;</span><span class="tag">&lt;/<span class="name">ion-tab</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-tab</span> [<span class="attr">root</span>]=<span class="string">"tab2Root"</span> (<span class="attr">ionSelect</span>)=<span class="string">"selectFriend()"</span> <span class="attr">tabTitle</span>=<span class="string">"Friends"</span> <span class="attr">tabIcon</span>=<span class="string">"aperture"</span> <span class="attr">tabBadge</span>=<span class="string">"3"</span> <span class="attr">tabBadgeStyle</span>=<span class="string">"danger"</span>&gt;</span><span class="tag">&lt;/<span class="name">ion-tab</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-tab</span> [<span class="attr">root</span>]=<span class="string">"tab3Root"</span> <span class="attr">enabled</span>=<span class="string">"false"</span>  <span class="attr">swipeBackEnabled</span>=<span class="string">"true"</span> <span class="attr">tabTitle</span>=<span class="string">"Contact"</span> <span class="attr">tabIcon</span>=<span class="string">"contacts"</span>&gt;</span><span class="tag">&lt;/<span class="name">ion-tab</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-tabs</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>示例typeScript脚本代码如下：</li>
-</ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, ViewChild &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HomePage &#125; <span class="keyword">from</span> <span class="string">'../home/home'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AboutPage &#125; <span class="keyword">from</span> <span class="string">'../about/about'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ContactPage &#125; <span class="keyword">from</span> <span class="string">'../contact/contact'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Tabs, ModalController &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;templateUrl: <span class="string">'tabs.html'</span>&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> TabsPage &#123;</span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">'mainTabs'</span>) tabRef: Tabs;</span><br><span class="line">  <span class="comment">// this tells the tabs component which Pages</span></span><br><span class="line">  <span class="comment">// should be each tab's root Page</span></span><br><span class="line">  <span class="comment">// 为tab标签指定导航至的页面</span></span><br><span class="line">  tab1Root: <span class="built_in">any</span> = HomePage;</span><br><span class="line">  tab2Root: <span class="built_in">any</span> = AboutPage;</span><br><span class="line">  tab3Root: <span class="built_in">any</span> = ContactPage;</span><br><span class="line">  <span class="comment">// 指定参数,在tab指向的页面可以读取到该参数</span></span><br><span class="line">  homeParams: <span class="built_in">any</span> = &#123;user1: <span class="string">'admin'</span>, user2: <span class="string">'ionic'</span>&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> modalCtrl: ModalController</span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  changeTabs = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'tab changed'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 选中tab页后的事件</span></span><br><span class="line">  selectFriend() &#123;</span><br><span class="line">    <span class="keyword">let</span> modal = <span class="keyword">this</span>.modalCtrl.create(ContactPage); <span class="comment">// 声明一个modal</span></span><br><span class="line">    modal.present(); <span class="comment">// 弹出modal</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ionViewDidEnter() &#123;</span><br><span class="line">    <span class="keyword">let</span> mainTabs = <span class="keyword">this</span>.tabRef;</span><br><span class="line">    mainTabs.select(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>home页使用参数示例代码如下：<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="comment">// 引入NavParams</span></span><br><span class="line"><span class="keyword">import</span> &#123; NavController,NavParams &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">    selector: <span class="string">'page-home'</span>,</span><br><span class="line">    templateUrl: <span class="string">'home.html'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HomePage &#123;</span><br><span class="line">    <span class="comment">// 在这里指定navParams</span></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> navCtrl: NavController,<span class="keyword">public</span> navParams:NavParams</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    ionViewWillEnter()&#123;</span><br><span class="line">        <span class="comment">// 使用this.navParams.data可以读取tab页传过来的参数</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"NavParams:"</span>+<span class="keyword">this</span>.navParams.data.user1);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"NavParams:"</span>+<span class="keyword">this</span>.navParams.data.user2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 
+* 示例typeScript脚本代码如下：
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, ViewChild &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HomePage &#125; <span class="keyword">from</span> <span class="string">'../home/home'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AboutPage &#125; <span class="keyword">from</span> <span class="string">'../about/about'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ContactPage &#125; <span class="keyword">from</span> <span class="string">'../contact/contact'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Tabs, ModalController &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;templateUrl: <span class="string">'tabs.html'</span>&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> TabsPage &#123;</span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">'mainTabs'</span>) tabRef: Tabs;</span><br><span class="line">  <span class="comment">// this tells the tabs component which Pages</span></span><br><span class="line">  <span class="comment">// should be each tab's root Page</span></span><br><span class="line">  <span class="comment">// 为tab标签指定导航至的页面</span></span><br><span class="line">  tab1Root: <span class="built_in">any</span> = HomePage;</span><br><span class="line">  tab2Root: <span class="built_in">any</span> = AboutPage;</span><br><span class="line">  tab3Root: <span class="built_in">any</span> = ContactPage;</span><br><span class="line">  <span class="comment">// 指定参数,在tab指向的页面可以读取到该参数</span></span><br><span class="line">  homeParams: <span class="built_in">any</span> = &#123;user1: <span class="string">'admin'</span>, user2: <span class="string">'ionic'</span>&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> modalCtrl: ModalController</span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  changeTabs = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'tab changed'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 选中tab页后的事件</span></span><br><span class="line">  selectFriend() &#123;</span><br><span class="line">    <span class="keyword">let</span> modal = <span class="keyword">this</span>.modalCtrl.create(ContactPage); <span class="comment">// 声明一个modal</span></span><br><span class="line">    modal.present(); <span class="comment">// 弹出modal</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ionViewDidEnter() &#123;</span><br><span class="line">    <span class="keyword">let</span> mainTabs = <span class="keyword">this</span>.tabRef;</span><br><span class="line">    mainTabs.select(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+* home页使用参数示例代码如下：
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="comment">// 引入NavParams</span></span><br><span class="line"><span class="keyword">import</span> &#123; NavController,NavParams &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">    selector: <span class="string">'page-home'</span>,</span><br><span class="line">    templateUrl: <span class="string">'home.html'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HomePage &#123;</span><br><span class="line">    <span class="comment">// 在这里指定navParams</span></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> navCtrl: NavController,<span class="keyword">public</span> navParams:NavParams</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    ionViewWillEnter()&#123;</span><br><span class="line">        <span class="comment">// 使用this.navParams.data可以读取tab页传过来的参数</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"NavParams:"</span>+<span class="keyword">this</span>.navParams.data.user1);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"NavParams:"</span>+<span class="keyword">this</span>.navParams.data.user2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</ion-tab></ion-tabs>
       
     </div>
     
@@ -723,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性和事件详解"><span class="nav-number">1.</span> <span class="nav-text">属性和事件详解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"> 属性和事件详解 </span></a></li></ol></div>
             
 
           </div>

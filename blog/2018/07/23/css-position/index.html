@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="position 属性介绍（1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。 （2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）">
+<meta name="description" content="position 属性介绍   （1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。  （2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）">
 <meta name="keywords" content="css,css3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS - 定位属性position使用详解（static、relative、fixed、absolute）">
 <meta property="og:url" content="https://github.com/alex-0407/2018/07/23/css-position/index.html">
 <meta property="og:site_name" content="alex的博客">
-<meta property="og:description" content="position 属性介绍（1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。 （2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）">
+<meta property="og:description" content="position 属性介绍   （1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。  （2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-23T03:38:20.236Z">
+<meta property="og:updated_time" content="2018-07-23T07:26:47.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS - 定位属性position使用详解（static、relative、fixed、absolute）">
-<meta name="twitter:description" content="position 属性介绍（1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。 （2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）">
+<meta name="twitter:description" content="position 属性介绍   （1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。  （2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）">
 
 
 
@@ -403,26 +403,112 @@
       
 
       
-        <blockquote>
-<hr>
-</blockquote>
-<h3 id="position-属性介绍"><a href="#position-属性介绍" class="headerlink" title="position 属性介绍"></a>position 属性介绍</h3><p>（1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。</p>
-<p>（2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）</p>
-<hr>
- <a id="more"></a>
-<h3 id="position-static（默认值）"><a href="#position-static（默认值）" class="headerlink" title="position: static（默认值）"></a>position: static（默认值）</h3><p>1，基本介绍<br>（1）static 是默认值。表示没有定位，或者说不算具有定位属性。<br>（2）如果元素 position 属性值为 static（或者未设 position 属性），该元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</p>
-<p>2，使用样例</p>
-<p>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  div &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: #C9FFFF;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<p>html:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;text&quot;/&gt;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
-<p>我们不设置元素的 postion 属性值，那么默认的显示效果如下：</p>
-<div class="position-static"></div> <input type="text"><br><br>### position: relative（相对定位）<br><br>1，基本介绍<br><br>（1）relative 生成相对定位的元素，相对于其正常位置进行定位。<br>（2）相对定位完成的过程如下：<br><br>    首先按默认方式（static）生成一个元素(并且元素像层一样浮动了起来)。<br>    然后相对于以前的位置移动，移动的方向和幅度由 left、right、top、bottom 属性确定，偏移前的位置保留不动。<br><br><br>2，样例代码<br><br>下面代码将文本输入框 position 设置为 relative（相对定位），并且相对于默认的位置向右、向上分别移动 15 个像素。<br><br>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  background-color: #C9FFFF;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">input &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  left: 15px;</span><br><span class="line">  top: -15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br> html:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; /&gt;</span><br></pre></td></tr></table></figure><br><br>运行效果如下：<br><br><div class="position-relative"></div> <input type="text" class="position-relative-input"><br><br>### position: absolute（绝对定位）<br><br>1，基本介绍<br><br>（1）absolute 生成绝对定位的元素。<br>（2）绝对定位的元素使用 left、right、top、bottom 属性相对于其最接近的一个具有定位属性的父元素进行绝对定位。<br>（3）如果不存在这样的父元素，则相对于 body 元素，即相对于浏览器窗口。<br><br>2，样例代码<br><br>    下面代码让标题元素相对于它的父容器做绝对定位（注意父容器 position 要设置为 relative）。<br>    同时通过 top 属性让标题元素上移，使其覆盖在父容器的上边框。<br>    最后通过 left 和 margin-left 配合实现这个绝对定位元素的水平居中。<br><br>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#box &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  -webkit-box-flex:1;</span><br><span class="line">  border: 1px solid #28AE65;</span><br><span class="line">  border-radius:6px;</span><br><span class="line">  padding: 20px;</span><br><span class="line">  position: relative;</span><br><span class="line">  font-size: 12px;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">#title &#123;</span><br><span class="line">  background: #FFFFFF;</span><br><span class="line">  color: #28AE65;</span><br><span class="line">  font-size: 15px;</span><br><span class="line">  text-align: center;</span><br><span class="line">  width: 70px;</span><br><span class="line">  height: 20px;</span><br><span class="line">  line-height: 20px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: -10px;</span><br><span class="line">  left: 50%;</span><br><span class="line">  margin-left: -35px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>html:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;box&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;title&quot;&gt;标题&lt;/div&gt;</span><br><span class="line">  欢迎访问我的博客</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><br><br>运行效果如下，标题元素虽然是在边框容器的内部。但由于其使用绝对定位，并做位置调整，最后显示效果就是覆盖在父容器边框上。<br><br><div class="position-absolute"><br>  <div class="position-absolute-title">标题</div><br>  嘿，guys！欢迎访问我的博客。<br></div>
+        
+ <h3 id="position 属性介绍"> position 属性介绍 </h3>
 
-<h3 id="position-fixed（固定定位）"><a href="#position-fixed（固定定位）" class="headerlink" title="position: fixed（固定定位）"></a>position: fixed（固定定位）</h3><p>1，基本介绍<br>（1）fixed 生成绝对定位的元素，该元素相对于浏览器窗口进行定位。<br>（2）固定定位的元素不会随浏览器窗口的滚动条滚动而变化，也不会受文档流动影响，而是始终位于浏览器窗口内视图的某个位置。</p>
-<p>2，样例代码<br>（1）下面代码让输入框位于浏览器窗口的底部。</p>
-<p>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  bottom: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>html:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
-<p>（2）可以看到不管滚动条如何滚动，输入框始终处于窗口的最下方。</p>
-<p><ol><br>  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><br>  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><br>  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><br>  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><br></ol></p>
+（1）position 属性自 CSS2 起就有了，该属性规定元素的定位类型。所有主流浏览器都支持 position 属性。
+
+（2）position 的可选值有四个：static、relative、absolute、fixed。下面分别进行介绍。（其实还有个 inherit，不过这个是 IE 特有的，这里就不做讨论）
+
+ <a id="more"></a>
+
+<h3 id="position: static（默认值）"> position: static（默认值）</h3>
+
+1，基本介绍
+（1）static 是默认值。表示没有定位，或者说不算具有定位属性。
+（2）如果元素 position 属性值为 static（或者未设 position 属性），该元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
+
+2，使用样例
+
+css: 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  div &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: #C9FFFF;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+html: 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;text&quot;/&gt;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+我们不设置元素的 postion 属性值，那么默认的显示效果如下：
+
+<div class="position-static"></div> <input type="text">
+
+
+
+<h3 id="position: relative（相对定位）"> position: relative（相对定位）</h3>
+
+1，基本介绍
+
+（1）relative 生成相对定位的元素，相对于其正常位置进行定位。
+（2）相对定位完成的过程如下：
+
+    首先按默认方式（static）生成一个元素(并且元素像层一样浮动了起来)。
+    然后相对于以前的位置移动，移动的方向和幅度由 left、right、top、bottom 属性确定，偏移前的位置保留不动。
+
+
+2，样例代码
+
+下面代码将文本输入框 position 设置为 relative（相对定位），并且相对于默认的位置向右、向上分别移动 15 个像素。
+
+css:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  background-color: #C9FFFF;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">input &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  left: 15px;</span><br><span class="line">  top: -15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ html:
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+运行效果如下：
+
+<div class="position-relative"></div> <input type="text" class="position-relative-input">
+
+<h3 id="position: absolute（绝对定位）"> position: absolute（绝对定位）</h3>
+
+1，基本介绍
+
+（1）absolute 生成绝对定位的元素。
+（2）绝对定位的元素使用 left、right、top、bottom 属性相对于其最接近的一个具有定位属性的父元素进行绝对定位。
+（3）如果不存在这样的父元素，则相对于 body 元素，即相对于浏览器窗口。
+
+2，样例代码
+
+    下面代码让标题元素相对于它的父容器做绝对定位（注意父容器 position 要设置为 relative）。
+    同时通过 top 属性让标题元素上移，使其覆盖在父容器的上边框。
+    最后通过 left 和 margin-left 配合实现这个绝对定位元素的水平居中。
+
+css:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#box &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  -webkit-box-flex:1;</span><br><span class="line">  border: 1px solid #28AE65;</span><br><span class="line">  border-radius:6px;</span><br><span class="line">  padding: 20px;</span><br><span class="line">  position: relative;</span><br><span class="line">  font-size: 12px;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">#title &#123;</span><br><span class="line">  background: #FFFFFF;</span><br><span class="line">  color: #28AE65;</span><br><span class="line">  font-size: 15px;</span><br><span class="line">  text-align: center;</span><br><span class="line">  width: 70px;</span><br><span class="line">  height: 20px;</span><br><span class="line">  line-height: 20px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: -10px;</span><br><span class="line">  left: 50%;</span><br><span class="line">  margin-left: -35px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+html:
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;box&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;title&quot;&gt;标题&lt;/div&gt;</span><br><span class="line">  欢迎访问我的博客</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+运行效果如下，标题元素虽然是在边框容器的内部。但由于其使用绝对定位，并做位置调整，最后显示效果就是覆盖在父容器边框上。
+
+<br><br>
+
+<div class="position-absolute">
+  <div class="position-absolute-title">标题</div>
+  嘿，guys！欢迎访问我的博客。
+</div>
+
+<h3 id="position: fixed（固定定位）"> position: fixed（固定定位）</h3>
+
+1，基本介绍
+（1）fixed 生成绝对定位的元素，该元素相对于浏览器窗口进行定位。
+（2）固定定位的元素不会随浏览器窗口的滚动条滚动而变化，也不会受文档流动影响，而是始终位于浏览器窗口内视图的某个位置。
+
+2，样例代码
+（1）下面代码让输入框位于浏览器窗口的底部。
+	
+css:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  bottom: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+html:
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;&lt;li&gt;数据&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+（2）可以看到不管滚动条如何滚动，输入框始终处于窗口的最下方。
+
+<ol>
+  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li>
+  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li>
+  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li>
+  <li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li><li>数据</li>
+</ol>
 <input type="text" class="position-fixed-input" placeholder="look here, fixed input">
       
     </div>
@@ -717,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#position-属性介绍"><span class="nav-number">1.</span> <span class="nav-text">position 属性介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-static（默认值）"><span class="nav-number">2.</span> <span class="nav-text">position: static（默认值）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-fixed（固定定位）"><span class="nav-number">3.</span> <span class="nav-text">position: fixed（固定定位）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#position 属性介绍"><span class="nav-number">1.</span> <span class="nav-text"> position 属性介绍 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position: static（默认值）"><span class="nav-number">2.</span> <span class="nav-text"> position: static（默认值）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position: relative（相对定位）"><span class="nav-number">3.</span> <span class="nav-text"> position: relative（相对定位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position: absolute（绝对定位）"><span class="nav-number">4.</span> <span class="nav-text"> position: absolute（绝对定位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position: fixed（固定定位）"><span class="nav-number">5.</span> <span class="nav-text"> position: fixed（固定定位）</span></a></li></ol></div>
             
 
           </div>
