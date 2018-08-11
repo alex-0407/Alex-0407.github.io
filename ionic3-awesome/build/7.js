@@ -1,14 +1,16 @@
 webpackJsonp([7],{
 
-/***/ 690:
+/***/ 712:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserPageModule", function() { return BrowserPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangecityPageModule", function() { return ChangecityPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__browser__ = __webpack_require__(700);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__changecity__ = __webpack_require__(721);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ion_multi_picker__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ion_multi_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ion_multi_picker__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,38 +20,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var BrowserPageModule = /** @class */ (function () {
-    function BrowserPageModule() {
+
+var ChangecityPageModule = /** @class */ (function () {
+    function ChangecityPageModule() {
     }
-    BrowserPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+    ChangecityPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__browser__["a" /* BrowserPage */]
+                __WEBPACK_IMPORTED_MODULE_2__changecity__["a" /* ChangecityPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__browser__["a" /* BrowserPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__changecity__["a" /* ChangecityPage */]),
+                __WEBPACK_IMPORTED_MODULE_3_ion_multi_picker__["MultiPickerModule"]
             ],
-            entryComponents: [],
-            providers: []
         })
-    ], BrowserPageModule);
-    return BrowserPageModule;
+    ], ChangecityPageModule);
+    return ChangecityPageModule;
 }());
 
-//# sourceMappingURL=browser.module.js.map
+//# sourceMappingURL=changecity.module.js.map
 
 /***/ }),
 
-/***/ 700:
+/***/ 721:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BrowserPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangecityPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__browser_popover__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_weather_weather__ = __webpack_require__(362);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,158 +60,83 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
+
 /**
- * Created by DreamBoy on 2016/11/21.
+ * Generated class for the ChangecityPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
  */
-
-
-
-
-
-var BrowserPage = /** @class */ (function () {
-    function BrowserPage(navCtrl, params, platform, popoverCtrl, sanitizer) {
+var ChangecityPage = /** @class */ (function () {
+    function ChangecityPage(navCtrl, navParams, storage, weatherProvider) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.params = params;
-        this.platform = platform;
-        this.popoverCtrl = popoverCtrl;
-        this.sanitizer = sanitizer;
-        this.browser = {
-            isLoaded: false,
-            proObj: null,
-            progress: 0,
-            secUrl: '',
-            title: '加载中',
-            url: ''
-        };
-        this.shareConfig = {
-            isShow: true
-        }; // 分享控制的配置
-        var browser = this.params.get('browser');
-        if (browser) {
-            this.browser.title = browser.title;
-            this.browser.url = browser.url;
-            this.browser.secUrl = this.sanitizer.bypassSecurityTrustResourceUrl(browser.url);
-            if (browser.share) {
-                this.browser.share = browser.share;
+        this.navParams = navParams;
+        this.storage = storage;
+        this.weatherProvider = weatherProvider;
+        this.storage.get('location').then(function (val) {
+            if (val != null) {
+                var location_1 = JSON.parse(val);
+                _this.city = location_1.city;
             }
-        }
-        else {
-            this.browser.secUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.browser.url);
-        }
-        this.reload();
-        var backAction = platform.registerBackButtonAction(function () {
-            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */], { tabindex: 1 });
-            backAction();
-        }, 2);
-        var self = this;
-        this.microAppCall = function (e) {
-            if (e.data.msgType == "refresh") {
-                self.reload();
+            else {
+                _this.city = '唐山';
             }
-            else if (e.data.msgType == "close") {
-                self.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */], { tabindex: 1 }, { direction: "back" });
-            }
-            //window.frames[0].postMessage(event.data,'*');
-        };
-        window.addEventListener('message', this.microAppCall);
+        });
+        this.cityBkData = this.navParams.get('cityBkData');
+        this.cityColumns = weatherProvider.citys;
     }
-    BrowserPage.prototype.ionViewDidLoad = function () {
+    ChangecityPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ChangecityPage');
+    };
+    ChangecityPage.prototype.saveForm = function () {
         var _this = this;
-        if (!this.browser.proObj) {
-            this.browser.proObj = document.getElementById('progress');
+        var location = {
+            city: this.city
+        };
+        this.cityBkData(this.city).then(function (result) {
+            _this.navCtrl.pop();
+        }, function (err) {
+            console.log(err);
+        });
+        this.storage.set('location', JSON.stringify(location));
+    };
+    ChangecityPage.prototype.saveCitySelect = function () {
+        var _this = this;
+        var location = {
+            city: this.city
+        };
+        var isSave = false;
+        var cityArr = document.getElementById('cities').innerText;
+        if (cityArr) {
+            var cityTmp = cityArr.split('-');
+            if (cityTmp[2] && cityTmp[2] != '市辖区') {
+                location.city = cityTmp[2];
+                isSave = true;
+            }
         }
-        this.onprogress();
-        this.navBar.backButtonClick = function (e) {
-            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */], { tabindex: 1 }, { direction: "back" });
-        };
+        if (isSave) {
+            this.cityBkData(this.city).then(function (result) {
+                _this.navCtrl.pop();
+            }, function (err) {
+                console.log(err);
+            });
+            this.storage.set('location', JSON.stringify(location));
+        }
     };
-    BrowserPage.prototype.ionViewDidLeave = function () {
-        window.removeEventListener('message', this.microAppCall);
-    };
-    // 生成随机数
-    BrowserPage.prototype.random = function (min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    };
-    // 网页访问进度
-    BrowserPage.prototype.onprogress = function () {
-        var _this = this;
-        // 随机时间
-        var timeout = this.random(10, 30);
-        var timer = setTimeout(function () {
-            if (_this.browser.isLoaded) {
-                _this.browser.proObj.style.width = '100%';
-                clearTimeout(timer);
-                return;
-            }
-            // 随机进度
-            _this.browser.progress += _this.random(1, 5);
-            // 随机进度不能超过 90%，以免页面还没加载完毕，进度已经 100% 了
-            if (_this.browser.progress > 90) {
-                _this.browser.progress = 90;
-            }
-            _this.browser.proObj.style.width = _this.browser.progress + '%';
-            _this.onprogress();
-        }, timeout);
-    };
-    // 如果iframe页面加载成功后
-    BrowserPage.prototype.loaded = function () {
-        this.browser.isLoaded = true;
-    };
-    // 显示Popver选项
-    BrowserPage.prototype.presentPopover = function (myEvent) {
-        var _this = this;
-        var cb = {
-            refresh: function () {
-                _this.reload();
-            },
-            close: function () {
-                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */], { tabindex: 1 });
-            }
-        };
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_3__browser_popover__["a" /* BrowserPopover */], {
-            callback: cb
-        });
-        popover.present({
-            ev: myEvent
-        });
-    };
-    // 重新加载页面
-    BrowserPage.prototype.reload = function () {
-        var _this = this;
-        var title = this.browser.title;
-        var url = this.browser.secUrl;
-        this.browser.title = '加载中';
-        this.browser.secUrl = this.sanitizer.bypassSecurityTrustResourceUrl('');
-        setTimeout(function () {
-            _this.browser.isLoaded = false;
-            _this.browser.progress = 0;
-            if (!_this.browser.proObj) {
-                _this.browser.proObj = document.getElementById('progress');
-            }
-            _this.onprogress();
-            _this.browser.title = title;
-            _this.browser.secUrl = url;
-        }, 10);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Navbar */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Navbar */])
-    ], BrowserPage.prototype, "navBar", void 0);
-    BrowserPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-browser',template:/*ion-inline-start:"C:\alex\github\ionic3-awesome\src\pages\browser\browser.html"*/'<ion-header no-shadow>\n  <ion-navbar class="page-navbar">\n    <ion-title>{{browser.title}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="presentPopover($event)">\n        <ion-icon name="more" style="color: white"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content class="content">\n  <!--scroll="true" overflow-scroll="true"-->\n  <div class="progress" [hidden]="browser.isLoaded">\n    <div class="progress-inner" id="progress"></div>\n  </div>\n\n  <iframe #iframe id="iframe" class="iframe" sandbox="allow-scripts allow-top-navigation allow-pointer-lock allow-same-origin allow-popups allow-forms allow-modals"\n    [src]="browser.secUrl" (load)="loaded()" >\n  </iframe>\n</ion-content>\n'/*ion-inline-end:"C:\alex\github\ionic3-awesome\src\pages\browser\browser.html"*/
+    ChangecityPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-changecity',template:/*ion-inline-start:"/Users/dongxingbin/github/ionic3-awesome/src/pages/changecity/changecity.html"*/'<!--\n  Generated template for the ChangecityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>changecity</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col width-100>\n        <form (ngSubmit)="saveForm()">\n          <ion-item>\n            <ion-label fixed>\n              城市\n            </ion-label>\n            <ion-input [(ngModel)]="city" name="city" type="text"></ion-input>\n          </ion-item>\n          <button ion-button type="submit" class="ion">保存</button>\n        </form>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  <ion-list>\n    <ion-item>\n      <ion-icon name="pin" item-start></ion-icon>\n      <ion-label>城市</ion-label>\n      <ion-multi-picker id="cities" item-content [multiPickerColumns]="cityColumns" [separator]="\'-\'" [cancelText]="\'取消\'" [doneText]="\'完成\'"></ion-multi-picker>\n    </ion-item>\n    <button ion-button class="ion" (click)="saveCitySelect();">保存</button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/dongxingbin/github/ionic3-awesome/src/pages/changecity/changecity.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* PopoverController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]])
-    ], BrowserPage);
-    return BrowserPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_weather_weather__["a" /* WeatherProvider */]])
+    ], ChangecityPage);
+    return ChangecityPage;
 }());
 
-//# sourceMappingURL=browser.js.map
+//# sourceMappingURL=changecity.js.map
 
 /***/ })
 

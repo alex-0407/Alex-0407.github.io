@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 696:
+/***/ 719:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoPageModule", function() { return VideoPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__video__ = __webpack_require__(707);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WeatherPageModule", function() { return WeatherPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weather__ = __webpack_require__(731);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var VideoPageModule = /** @class */ (function () {
-    function VideoPageModule() {
+var WeatherPageModule = /** @class */ (function () {
+    function WeatherPageModule() {
     }
-    VideoPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+    WeatherPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__video__["a" /* VideoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__weather__["a" /* WeatherPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__video__["a" /* VideoPage */]),
+                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__weather__["a" /* WeatherPage */])
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_2__video__["a" /* VideoPage */]
-            ]
         })
-    ], VideoPageModule);
-    return VideoPageModule;
+    ], WeatherPageModule);
+    return WeatherPageModule;
 }());
 
-//# sourceMappingURL=video.module.js.map
+//# sourceMappingURL=weather.module.js.map
 
 /***/ }),
 
-/***/ 707:
+/***/ 731:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VideoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_tabs_tabs__ = __webpack_require__(149);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeatherPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_weather_weather__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(361);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,41 +59,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var VideoPage = /** @class */ (function () {
-    function VideoPage(navCtrl, navParams) {
+
+/**
+ * Generated class for the WeatherPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var WeatherPage = /** @class */ (function () {
+    function WeatherPage(navCtrl, navParams, weatherProvider, storage) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.weatherProvider = weatherProvider;
+        this.storage = storage;
     }
-    VideoPage.prototype.ionViewWillEnter = function () {
+    WeatherPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad WeatherPage');
     };
-    VideoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad VideoPage');
+    WeatherPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        // 每次进入重新获取
+        this.storage.get('location').then(function (val) {
+            if (val != null) {
+                _this.location = JSON.parse(val);
+            }
+            else {
+                _this.location = {
+                    city: '唐山'
+                };
+            }
+            _this.weatherProvider.getWeather(_this.location.city).subscribe(function (result) {
+                _this.weatherResult = result;
+                _this.weather = _this.weatherResult.result;
+                _this.weatherImg = 'http://www.moji.com//templets/mojichina/images/weather/weather/w' + _this.weather.img + '.png';
+            });
+        });
     };
-    VideoPage.prototype.ionViewWillLeave = function () {
-        this.playPause();
+    WeatherPage.prototype.changeCity = function () {
+        var cityBkData = function (msg) {
+            return new Promise(function (resolve, reject) {
+                if (msg != undefined) {
+                    resolve(true);
+                }
+                else {
+                    reject(Error('error'));
+                }
+            });
+        };
+        this.navCtrl.push('ChangecityPage', { 'cityBkData': cityBkData });
     };
-    VideoPage.prototype.playPause = function () {
-        var myVideo = document.getElementsByTagName('video')[0];
-        if (myVideo.paused) {
-            myVideo.play();
-        }
-        else {
-            myVideo.pause();
-        }
-    };
-    VideoPage.prototype.goHome = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__pages_tabs_tabs__["a" /* TabsPage */]);
-    };
-    VideoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-video',template:/*ion-inline-start:"C:\alex\github\ionic3-awesome\src\pages\video\video.html"*/'<ion-header no-border>\n  <ion-navbar transparent>\n    <ion-title>video</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content fullscreen>\n  <h1 text-center>最后一滴水</h1>\n  <video autoplay loop src="assets/video/water.mp4"></video>\n  <img class="cover" src="assets/imgs/1.jpg"/>\n\n  <ion-slides autoplay="1000" pager loop>\n    <ion-slide>\n      <h4>词曲：陈越</h4>\n      <p>演唱：陈斯</p>\n    </ion-slide>\n    <ion-slide>\n      <h4>只剩下最后一滴水</h4>\n      <p>我听见地球在哭,青山和绿水渐渐消逝,只留下一片荒芜</p>\n    </ion-slide>\n    <ion-slide>\n      <h4>只剩下最后一滴水</h4>\n      <p>我听见人类在哭,眼睁睁 看着万物消失,剩下我好孤独</p>\n    </ion-slide>\n    <ion-slide>\n      <h4>我听见地球在哭</h4>\n      <p>看见大地裂开深深的痛楚,是否一定等到无可退路,才能醒悟</p>\n    </ion-slide>\n    <ion-slide>\n      <h4>我听见地球在哭</h4>\n      <p>看见大地裂开深深的痛楚,是否一定等到无可退路,才能醒悟</p>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\alex\github\ionic3-awesome\src\pages\video\video.html"*/,
+    WeatherPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'page-weather',template:/*ion-inline-start:"/Users/dongxingbin/github/ionic3-awesome/src/pages/weather/weather.html"*/'<!--\n  Generated template for the WeatherPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="danger">\n    <ion-title>weather</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="home">\n  <ion-grid *ngIf="weather">\n    <ion-row>\n      <ion-col>\n        <div class="location" (click)="changeCity();">{{weather.city}}</div>\n      </ion-col>\n      <ion-col>\n        <div class="icon">\n          <img src="{{weatherImg}}" alt="">\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <h1 class="temp">{{weather.temp}}℃</h1>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col width=100>\n        <ion-list>\n          <ion-item>\n            <strong>温度：</strong>{{weather.templow}}℃ -- {{weather.temphigh}}℃\n          </ion-item>\n          <ion-item>\n            <strong>风向：</strong>{{weather.winddirect}}\n          </ion-item>\n          <ion-item>\n            <strong>湿度：</strong>{{weather.humidity}}\n          </ion-item>\n        </ion-list>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/dongxingbin/github/ionic3-awesome/src/pages/weather/weather.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-    ], VideoPage);
-    return VideoPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_0__providers_weather_weather__["a" /* WeatherProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    ], WeatherPage);
+    return WeatherPage;
 }());
 
-//# sourceMappingURL=video.js.map
+//# sourceMappingURL=weather.js.map
 
 /***/ })
 
